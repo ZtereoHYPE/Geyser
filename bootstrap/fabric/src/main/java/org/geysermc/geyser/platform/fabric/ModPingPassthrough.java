@@ -47,6 +47,12 @@ import org.jetbrains.annotations.Nullable;
 import java.net.InetSocketAddress;
 import java.util.Objects;
 
+/**
+ * This is the Fabric implementation of {@link IGeyserPingPassthrough}.
+ * 
+ * It fetches all information about the current state of the server and gives the
+ * information to Geyser.
+ */
 @AllArgsConstructor
 public class ModPingPassthrough implements IGeyserPingPassthrough {
 

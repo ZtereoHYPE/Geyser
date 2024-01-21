@@ -31,7 +31,17 @@ import org.geysermc.geyser.Constants;
 import org.geysermc.geyser.platform.fabric.command.FabricCommandSender;
 import org.geysermc.geyser.util.VersionCheckUtils;
 
+/**
+ * Listens for player joins, and if they have the permission, notifies them if
+ * there is a new Geyser update.
+ */
 public final class GeyserFabricUpdateListener {
+    /**
+     * Called when a player joins the server.
+     * 
+     * @param handler - the player's packet handler
+     * @see {@link ServerGamePacketListenerImpl}
+     */
     public static void onPlayReady(ServerGamePacketListenerImpl handler) {
         if (Permissions.check(handler.player, Constants.UPDATE_PERMISSION, 2)) {
             VersionCheckUtils.checkForGeyserUpdate(() -> new FabricCommandSender(handler.player.createCommandSourceStack()));

@@ -37,10 +37,19 @@ import org.geysermc.geyser.text.ChatColor;
 
 import java.util.Objects;
 
+/**
+ * This is a wrapper around the command source for Fabric.
+ */
 public class FabricCommandSender implements GeyserCommandSource {
 
     private final CommandSourceStack source;
 
+    /**
+     * Creates a new command source from the given {@link CommandSourceStack}.
+     * 
+     * @param source - the command source to wrap
+     * @return the new command source
+     */
     public FabricCommandSender(CommandSourceStack source) {
         this.source = source;
     }

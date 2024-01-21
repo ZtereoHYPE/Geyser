@@ -65,6 +65,11 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 
+/**
+ * The Fabric implementation of {@link GeyserBootstrap}.
+ * 
+ * This is the main class that is loaded by Fabric.
+ */
 public class GeyserFabricMod implements ModInitializer, GeyserBootstrap {
     private static GeyserFabricMod instance;
 

@@ -32,11 +32,21 @@ import org.apache.logging.log4j.Logger;
 import org.geysermc.geyser.GeyserLogger;
 import org.geysermc.geyser.text.ChatColor;
 
+/**
+ * This is the Fabric implementation of {@link GeyserLogger}.
+ * 
+ * It will forward all messages to the Fabric logger.
+ */
 public class GeyserFabricLogger implements GeyserLogger {
     private final Logger logger = LogManager.getLogger("geyser-fabric");
 
     private boolean debug;
 
+    /**
+     * Creates a new Fabric logger.
+     * 
+     * @param isDebug - whether debug messages should be logged
+     */
     public GeyserFabricLogger(boolean isDebug) {
         debug = isDebug;
     }
@@ -73,7 +83,8 @@ public class GeyserFabricLogger implements GeyserLogger {
 
     @Override
     public void sendMessage(Component message) {
-        // As of Java Edition 1.19.2, Fabric's console doesn't natively support legacy format
+        // As of Java Edition 1.19.2, Fabric's console doesn't natively support legacy
+        // format
         String flattened = LegacyComponentSerializer.legacySection().serialize(message);
         // Add the reset at the end, or else format will persist... forever.
         // https://cdn.discordapp.com/attachments/573909525132738590/1033904509170225242/unknown.png

@@ -38,6 +38,9 @@ import org.spongepowered.asm.mixin.Mixin;
 
 import java.net.Proxy;
 
+/**
+ * This mixin is used to hook into the {@link DedicatedServer} constructor and get the port that the server is running on.
+ */
 @Mixin(DedicatedServer.class)
 public abstract class MinecraftDedicatedServerMixin extends MinecraftServer implements GeyserServerPortGetter {
     public MinecraftDedicatedServerMixin(Thread thread, LevelStorageSource.LevelStorageAccess levelStorageAccess, PackRepository packRepository, WorldStem worldStem, Proxy proxy, DataFixer dataFixer, Services services, ChunkProgressListenerFactory chunkProgressListenerFactory) {

@@ -45,6 +45,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import java.util.Objects;
 
+/**
+ * This mixin will hook into the IntegratedServer#publishServer method and start Geyser when the LAN is opened.
+ * 
+ * @see IntegratedServer#publishServer(GameType, boolean, int)
+ */
 @Environment(EnvType.CLIENT)
 @Mixin(IntegratedServer.class)
 public class IntegratedServerMixin implements GeyserServerPortGetter {

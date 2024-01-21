@@ -39,9 +39,19 @@ import org.geysermc.geyser.text.GeyserLocale;
 
 import java.util.Collections;
 
+/**
+ * This is the wrapper for the Fabric command executor.
+ * It forwards all commands to the internal Geyser command executor.
+ */
 public class GeyserFabricCommandExecutor extends GeyserCommandExecutor implements Command<CommandSourceStack> {
     private final GeyserCommand command;
 
+    /**
+     * Creates a new Fabric command executor.
+     * 
+     * @param connector - the Geyser instance
+     * @param command - the command to register
+     */
     public GeyserFabricCommandExecutor(GeyserImpl connector, GeyserCommand command) {
         super(connector, Collections.singletonMap(command.name(), command));
         this.command = command;
@@ -56,6 +66,19 @@ public class GeyserFabricCommandExecutor extends GeyserCommandExecutor implement
         return runWithArgs(context, "");
     }
 
+    /**
+     * Runs the command with the given arguments. This function will always 
+     * return 0, unless an error occurs, in which case an exception will be thrown.
+     * 
+     * This function is used by the Brigadier command dispatcher, which uses status
+     * codes to determine whether the command was successful. 
+     * 
+     * @see {@link Command}
+     * 
+     * @param context - the command context
+     * @param args - the arguments
+     * @return - 0 if the command was successful. 
+     */
     public int runWithArgs(CommandContext<CommandSourceStack> context, String args) {
         CommandSourceStack source = context.getSource();
         FabricCommandSender sender = new FabricCommandSender(source);

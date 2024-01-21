@@ -27,8 +27,22 @@ package org.geysermc.geyser.platform.fabric;
 
 import org.geysermc.geyser.GeyserMain;
 
+/**
+ * This is the Fabric implementation of {@link GeyserMain}.
+ * 
+ * It is used to show a message in case someone tries run the Geyser Fabric
+ * mod directly.
+ */
 public class GeyserFabricMain extends GeyserMain {
 
+    /**
+     * This is the main method of the Fabric implementation of Geyser.
+     * 
+     * It just shows a message telling the user to put the mod in the
+     * mods folder.
+     * 
+     * @param args - the command line arguments
+     */
     public static void main(String[] args) {
         new GeyserFabricMain().displayMessage();
     }

@@ -40,6 +40,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This is the Fabric implementation of {@link BootstrapDumpInfo}.
+ * 
+ * It adds Fabric-specific information to the dump.
+ */
 @Getter
 public class GeyserFabricDumpInfo extends BootstrapDumpInfo {
 
@@ -54,6 +59,12 @@ public class GeyserFabricDumpInfo extends BootstrapDumpInfo {
     private final boolean onlineMode;
     private final List<ModInfo> mods;
 
+    /**
+     * Creates a new Fabric dump info.
+     * 
+     * @param server - the Minecraft server instance
+     * @see MinecraftServer
+     */
     public GeyserFabricDumpInfo(MinecraftServer server) {
         this.platformName = server.getServerModName();
         FabricLoader.getInstance().getModContainer("fabricloader").ifPresent(mod ->

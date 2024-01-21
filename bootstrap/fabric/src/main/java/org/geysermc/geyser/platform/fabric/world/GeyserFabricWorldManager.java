@@ -54,6 +54,13 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * This is the world manager for Fabric servers.
+ * 
+ * It is mostly used to adapt certain NBT tags. 
+ * 
+ * @see {@link GeyserWorldManager}
+ */
 public class GeyserFabricWorldManager extends GeyserWorldManager {
     private final MinecraftServer server;
 

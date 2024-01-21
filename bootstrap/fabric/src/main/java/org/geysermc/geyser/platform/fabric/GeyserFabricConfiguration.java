@@ -33,10 +33,21 @@ import org.geysermc.geyser.configuration.GeyserJacksonConfiguration;
 
 import java.nio.file.Path;
 
+/**
+ * Represents the Geyser configuration for Fabric.
+ *
+ * @see {@link GeyserJacksonConfiguration}
+ */
 public class GeyserFabricConfiguration extends GeyserJacksonConfiguration {
     @JsonIgnore
     private Path floodgateKeyPath;
 
+    /**
+     * This will load the Floodgate keyPath from the Floodgate mod if it is loaded.
+     *
+     * @param geyser - the Geyser plugin instance
+     * @param floodgate - the Floodgate mod instance
+     */
     public void loadFloodgate(GeyserFabricMod geyser, ModContainer floodgate) {
         Path geyserDataFolder = geyser.getConfigFolder();
         Path floodgateDataFolder = floodgate != null ? FabricLoader.getInstance().getConfigDir().resolve("floodgate") : null;

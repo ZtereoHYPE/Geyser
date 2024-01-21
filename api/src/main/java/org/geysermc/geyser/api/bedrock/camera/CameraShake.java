@@ -25,7 +25,17 @@
 
 package org.geysermc.geyser.api.bedrock.camera;
 
+/**
+ * Represents the type of camera shake used by the bedrock client.
+ */
 public enum CameraShake {
+    /**
+     * The camera shake is positional, and translates the camera around.
+     */
     POSITIONAL,
+
+    /**
+     * The camera shake is rotational, and rotates the camera.
+     */
     ROTATIONAL
 }

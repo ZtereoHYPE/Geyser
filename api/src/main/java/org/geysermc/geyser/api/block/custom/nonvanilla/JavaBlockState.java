@@ -5,6 +5,9 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.geysermc.geyser.api.GeyserApi;
 
+/**
+ * Represents a Java Edition block state.
+ */
 public interface JavaBlockState {
     /**
      * Gets the identifier of the block state

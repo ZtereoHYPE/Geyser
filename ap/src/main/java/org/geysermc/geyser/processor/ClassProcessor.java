@@ -49,6 +49,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+
+/**
+ * Represents an annotation processor that finds all classes
+ * annotated with a specific annotation and writes them to a file.
+ */
 public class ClassProcessor extends AbstractProcessor {
     private final String annotationClassName;
 
@@ -56,10 +61,18 @@ public class ClassProcessor extends AbstractProcessor {
 
     private final Set<String> locations = new HashSet<>();
 
+    /**
+     * Creates a new class processor.
+     * @param annotationClassName The full classpath of the annotation to find
+     */
     public ClassProcessor(String annotationClassName) {
         this.annotationClassName = annotationClassName;
     }
 
+    /**
+     * Initializes the annotation processor by setting the processingEnv and setting the output path.
+     * @param processingEnv The processing environment
+     */
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
         super.init(processingEnv);
@@ -101,6 +114,12 @@ public class ClassProcessor extends AbstractProcessor {
         return false;
     }
 
+    /**
+     * Checks if a collection of TypeElements contains a specific classpath, by linearly traversing it.
+     * @param elements The collection of TypeElements to check
+     * @param className The classpath to check for
+     * @return Whether the collection contains the classpath
+     */
     public boolean contains(Collection<? extends TypeElement> elements, String className) {
         if (elements.isEmpty()) {
             return false;
@@ -115,6 +134,12 @@ public class ClassProcessor extends AbstractProcessor {
         return false;
     }
 
+    /**
+     * Checks if a list of AnnotationMirrors contains a specific class by classpath, by linearly traversing it.
+     * @param elements The list of AnnotationMirrors to check
+     * @param className The class to check for
+     * @return Whether the list contains the class
+     */
     public boolean contains(List<? extends AnnotationMirror> elements, String className) {
         if (elements.isEmpty()) {
             return false;
@@ -129,6 +154,9 @@ public class ClassProcessor extends AbstractProcessor {
         return false;
     }
 
+    /**
+     * Completes the processing of the annotation processor
+     */
     public void complete() {
         // Read existing annotation list and verify each class still has this annotation
         try (BufferedReader reader = this.createReader()) {

@@ -27,5 +27,9 @@ package org.geysermc.geyser.api.entity.type.player;
 
 import org.geysermc.geyser.api.entity.type.GeyserEntity;
 
+
+/**
+ * Represents a unique player entity in Geyser.
+ */
 public interface GeyserPlayerEntity extends GeyserEntity {
 }

@@ -226,7 +226,7 @@ public class FileUtils {
      */
     public static Set<Class<?>> getGeneratedClassesForAnnotation(String input) {
         try (InputStream annotatedClass = GeyserImpl.getInstance().getBootstrap().getResourceOrThrow(input);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(annotatedClass))) {
+            BufferedReader reader = new BufferedReader(new InputStreamReader(annotatedClass))) {
             return reader.lines().map(className -> {
                 try {
                     return Class.forName(className);

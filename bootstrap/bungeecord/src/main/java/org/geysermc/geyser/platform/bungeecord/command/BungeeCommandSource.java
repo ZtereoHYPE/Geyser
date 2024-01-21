@@ -35,10 +35,19 @@ import org.geysermc.geyser.text.GeyserLocale;
 
 import java.util.Locale;
 
+/**
+ * This is wrapper around the command source for Bungeecord.
+ */
 public class BungeeCommandSource implements GeyserCommandSource {
 
     private final net.md_5.bungee.api.CommandSender handle;
 
+    /**
+     * Creates a new command source from the given BungeeCord command sender.
+     * 
+     * @param handle the BungeeCord command sender
+     * @return the new command source
+     */
     public BungeeCommandSource(net.md_5.bungee.api.CommandSender handle) {
         this.handle = handle;
         // Ensure even Java players' languages are loaded
@@ -59,7 +68,8 @@ public class BungeeCommandSource implements GeyserCommandSource {
 
     @Override
     public void sendMessage(Component message) {
-        if (handle instanceof ProxiedPlayer player && player.getPendingConnection().getVersion() >= PROTOCOL_HEX_COLOR) {
+        if (handle instanceof ProxiedPlayer player
+                && player.getPendingConnection().getVersion() >= PROTOCOL_HEX_COLOR) {
             // Include hex colors
             handle.sendMessage(BungeeComponentSerializer.get().serialize(message));
             return;

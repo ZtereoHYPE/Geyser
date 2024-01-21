@@ -31,6 +31,13 @@ import io.netty.channel.ChannelPromise;
 import net.md_5.bungee.protocol.packet.LoginSuccess;
 import net.md_5.bungee.protocol.packet.SetCompression;
 
+/**
+ * This is a ChannelOutboundHandlerAdapter that disables compression on a specific connection.
+ * This is used to fix certain issues with BungeeCord and compression.
+ * 
+ * @see {@link GeyserBungeeCompressionDisabler}
+ * @see <a href="https://github.com/GeyserMC/Geyser/issues/4281">GeyserMC/Geyser#4281</a>
+ */
 public class GeyserBungeeCompressionDisabler extends ChannelOutboundHandlerAdapter {
     private boolean compressionDisabled = false;
 

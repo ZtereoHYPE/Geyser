@@ -39,10 +39,22 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Map;
 
+/**
+ * This is the wrapper for the Bungee command executor.
+ * It forwards all commands to the internal Geyser command executor.
+ */
 public class GeyserBungeeCommandExecutor extends Command implements TabExecutor {
     private final GeyserCommandExecutor commandExecutor;
 
-    public GeyserBungeeCommandExecutor(String name, GeyserImpl geyser, Map<String, org.geysermc.geyser.api.command.Command> commands) {
+    /**
+     * Creates a new BungeeCord command executor.
+     * 
+     * @param name - the name of the command
+     * @param geyser - the Geyser instance
+     * @param commands - the commands to register
+     */
+    public GeyserBungeeCommandExecutor(String name, GeyserImpl geyser,
+            Map<String, org.geysermc.geyser.api.command.Command> commands) {
         super(name);
 
         this.commandExecutor = new GeyserCommandExecutor(geyser, commands);
@@ -57,20 +69,24 @@ public class GeyserBungeeCommandExecutor extends Command implements TabExecutor 
             GeyserCommand command = this.commandExecutor.getCommand(args[0]);
             if (command != null) {
                 if (!sender.hasPermission(command.permission())) {
-                    String message = GeyserLocale.getPlayerLocaleString("geyser.bootstrap.command.permission_fail", commandSender.locale());
+                    String message = GeyserLocale.getPlayerLocaleString("geyser.bootstrap.command.permission_fail",
+                            commandSender.locale());
 
                     commandSender.sendMessage(ChatColor.RED + message);
                     return;
                 }
                 if (command.isBedrockOnly() && session == null) {
-                    String message = GeyserLocale.getPlayerLocaleString("geyser.bootstrap.command.bedrock_only", commandSender.locale());
+                    String message = GeyserLocale.getPlayerLocaleString("geyser.bootstrap.command.bedrock_only",
+                            commandSender.locale());
 
                     commandSender.sendMessage(ChatColor.RED + message);
                     return;
                 }
-                command.execute(session, commandSender, args.length > 1 ? Arrays.copyOfRange(args, 1, args.length) : new String[0]);
+                command.execute(session, commandSender,
+                        args.length > 1 ? Arrays.copyOfRange(args, 1, args.length) : new String[0]);
             } else {
-                String message = GeyserLocale.getPlayerLocaleString("geyser.bootstrap.command.not_found", commandSender.locale());
+                String message = GeyserLocale.getPlayerLocaleString("geyser.bootstrap.command.not_found",
+                        commandSender.locale());
                 commandSender.sendMessage(ChatColor.RED + message);
             }
         } else {

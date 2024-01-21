@@ -34,12 +34,22 @@ import org.geysermc.geyser.configuration.GeyserJacksonConfiguration;
 
 import java.nio.file.Path;
 
+/**
+ * Represents the Geyser configuration for BungeeCord.
+ * 
+ * @see {@link GeyserJacksonConfiguration}
+ */
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class GeyserBungeeConfiguration extends GeyserJacksonConfiguration {
     @JsonIgnore
     private Path floodgateKeyPath;
 
+    /**
+     * This will load the Floodgate keyPath from the Floodgate plugin if it is loaded.
+     * 
+     * @param plugin - the Geyser plugin instance
+     */
     public void loadFloodgate(GeyserBungeePlugin plugin) {
         Plugin floodgate = plugin.getProxy().getPluginManager().getPlugin("floodgate");
         Path geyserDataFolder = plugin.getDataFolder().toPath();

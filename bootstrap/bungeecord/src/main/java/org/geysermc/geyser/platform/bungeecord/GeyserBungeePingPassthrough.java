@@ -44,6 +44,12 @@ import java.net.SocketAddress;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
+/**
+ * This is the BungeeCord implementation of {@link IGeyserPingPassthrough}.
+ * 
+ * It fetches all information about the current state of the proxy and gives the
+ * information to Geyser.
+ */
 @AllArgsConstructor
 public class GeyserBungeePingPassthrough implements IGeyserPingPassthrough, Listener {
 
@@ -52,20 +58,20 @@ public class GeyserBungeePingPassthrough implements IGeyserPingPassthrough, List
     @Override
     public GeyserPingInfo getPingInformation(InetSocketAddress inetSocketAddress) {
         CompletableFuture<ProxyPingEvent> future = new CompletableFuture<>();
-        proxyServer.getPluginManager().callEvent(new ProxyPingEvent(new GeyserPendingConnection(inetSocketAddress), getPingInfo(), (event, throwable) -> {
-            if (throwable != null) {
-                future.completeExceptionally(throwable);
-            } else {
-                future.complete(event);
-            }
-        }));
+        proxyServer.getPluginManager().callEvent(new ProxyPingEvent(new GeyserPendingConnection(inetSocketAddress),
+                getPingInfo(), (event, throwable) -> {
+                    if (throwable != null) {
+                        future.completeExceptionally(throwable);
+                    } else {
+                        future.complete(event);
+                    }
+                }));
         ProxyPingEvent event = future.join();
         ServerPing response = event.getResponse();
         return new GeyserPingInfo(
                 response.getDescriptionComponent().toLegacyText(),
                 response.getPlayers().getMax(),
-                response.getPlayers().getOnline()
-        );
+                response.getPlayers().getOnline());
     }
 
     // This is static so pending connection can use it
@@ -76,12 +82,14 @@ public class GeyserBungeePingPassthrough implements IGeyserPingPassthrough, List
     private ServerPing getPingInfo() {
         return new ServerPing(
                 new ServerPing.Protocol(
-                        proxyServer.getName() + " " + ProtocolConstants.SUPPORTED_VERSIONS.get(0) + "-" + ProtocolConstants.SUPPORTED_VERSIONS.get(ProtocolConstants.SUPPORTED_VERSIONS.size() - 1),
-                        ProtocolConstants.SUPPORTED_VERSION_IDS.get(ProtocolConstants.SUPPORTED_VERSION_IDS.size() - 1)),
+                        proxyServer.getName() + " " + ProtocolConstants.SUPPORTED_VERSIONS.get(0) + "-"
+                                + ProtocolConstants.SUPPORTED_VERSIONS
+                                        .get(ProtocolConstants.SUPPORTED_VERSIONS.size() - 1),
+                        ProtocolConstants.SUPPORTED_VERSION_IDS
+                                .get(ProtocolConstants.SUPPORTED_VERSION_IDS.size() - 1)),
                 new ServerPing.Players(getDefaultListener().getMaxPlayers(), proxyServer.getOnlineCount(), null),
                 TextComponent.fromLegacyText(getDefaultListener().getMotd())[0],
-                proxyServer.getConfig().getFaviconObject()
-        );
+                proxyServer.getConfig().getFaviconObject());
     }
 
     private static class GeyserPendingConnection implements PendingConnection {

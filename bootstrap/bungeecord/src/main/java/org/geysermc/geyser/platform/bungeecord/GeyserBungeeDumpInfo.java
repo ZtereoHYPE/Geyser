@@ -35,6 +35,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This is the BungeeCord implementation of {@link BootstrapDumpInfo}.
+ * 
+ * It adds BungeeCord-specific information to the dump.
+ */
 @Getter
 public class GeyserBungeeDumpInfo extends BootstrapDumpInfo {
     private final String platformName;
@@ -43,6 +48,11 @@ public class GeyserBungeeDumpInfo extends BootstrapDumpInfo {
     private final List<ListenerInfo> listeners;
     private final List<PluginInfo> plugins;
 
+    /**
+     * Creates a new BungeeCord dump info.
+     * 
+     * @param proxy - the BungeeCord proxy instance
+     */
     GeyserBungeeDumpInfo(ProxyServer proxy) {
         super();
         this.platformName = proxy.getName();

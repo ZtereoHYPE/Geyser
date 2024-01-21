@@ -60,6 +60,12 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
+/**
+ * This is the main instance for the BungeeCord plugin.
+ * 
+ * @see {@link GeyserBootstrap}
+ * @see {@link Plugin}
+ */
 public class GeyserBungeePlugin extends Plugin implements GeyserBootstrap {
 
     private GeyserCommandManager geyserCommandManager;

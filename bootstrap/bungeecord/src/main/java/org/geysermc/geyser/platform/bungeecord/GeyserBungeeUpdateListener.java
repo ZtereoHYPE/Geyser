@@ -34,6 +34,10 @@ import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.platform.bungeecord.command.BungeeCommandSource;
 import org.geysermc.geyser.util.VersionCheckUtils;
 
+/**
+ * Listens for player joins, and if they have the permission, notifies them if
+ * there is a new Geyser update.
+ */
 public final class GeyserBungeeUpdateListener implements Listener {
 
     @EventHandler

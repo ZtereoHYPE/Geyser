@@ -50,6 +50,9 @@ import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.Set;
 
+/**
+ * This is a Bungee specific wrapper for {@link GeyserInjector}.
+ */
 public class GeyserBungeeInjector extends GeyserInjector implements Listener {
     private final Plugin plugin;
     private final ProxyServer proxy;
@@ -60,6 +63,11 @@ public class GeyserBungeeInjector extends GeyserInjector implements Listener {
     private Set<Channel> bungeeChannels = null;
     private boolean eventRegistered = false;
 
+    /**
+     * Creates a new BungeeCord injector.
+     * 
+     * @param plugin - the BungeeCord plugin instance
+     */
     public GeyserBungeeInjector(Plugin plugin) {
         this.plugin = plugin;
         this.proxy = plugin.getProxy();

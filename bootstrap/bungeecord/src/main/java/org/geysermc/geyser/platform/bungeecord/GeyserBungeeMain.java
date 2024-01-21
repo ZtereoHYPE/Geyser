@@ -27,16 +27,32 @@ package org.geysermc.geyser.platform.bungeecord;
 
 import org.geysermc.geyser.GeyserMain;
 
+/**
+ * This is the BungeeCord implementation of {@link GeyserMain}.
+ * 
+ * It is used to show a message in case someone tries run the Geyser BungeeCord
+ * plugin directly.
+ */
 public class GeyserBungeeMain extends GeyserMain {
 
+    /**
+     * This is the main method of the BungeeCord implementation of Geyser.
+     * 
+     * It just shows a message telling the user to put the plugin in the
+     * plugins folder.
+     * 
+     * @param args - the command line arguments
+     */
     public static void main(String[] args) {
         new GeyserBungeeMain().displayMessage();
     }
 
+    @Override
     public String getPluginType() {
         return "BungeeCord";
     }
 
+    @Override
     public String getPluginFolder() {
         return "plugins";
     }

@@ -32,11 +32,22 @@ import org.geysermc.geyser.GeyserLogger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * This is the BungeeCord implementation of {@link GeyserLogger}.
+ * 
+ * It will forward all messages to the BungeeCord logger.
+ */
 public class GeyserBungeeLogger implements GeyserLogger {
     private final Logger logger;
     @Getter @Setter
     private boolean debug;
 
+    /**
+     * Creates a new BungeeCord logger.
+     * 
+     * @param logger - the BungeeCord logger to forward messages to
+     * @param debug - whether debug messages should be logged
+     */
     public GeyserBungeeLogger(Logger logger, boolean debug) {
         this.logger = logger;
         this.debug = debug;

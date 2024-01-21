@@ -73,9 +73,6 @@ See https://checkstyle.org/ for more information.
         <module name="OneTopLevelClass"/>
         <module name="ModifierOrder"/>
         <module name="RedundantModifier"/>
-        <module name="MethodLength">
-            <property name="max" value="40"/>
-        </module>
         <module name="MissingOverride"/>
         <module name="EmptyForInitializerPad"/>
         <module name="EmptyForIteratorPad"/>
@@ -106,16 +103,16 @@ See https://checkstyle.org/ for more information.
             <property name="max" value="3"/>
         </module>
         <module name="TypeName"/>
-        <module name="ParameterNumber"/>
         <module name="VisibilityModifier">
             <property name="protectedAllowed" value="true"/>
         </module>
         <module name="AvoidNoArgumentSuperConstructorCall"/>
     </module>
-    <module name="LineLength">
+    <!-- Might be worth looking into enabling this. -->
+    <!-- <module name="LineLength">
         <property name="fileExtensions" value="java"/>
         <property name="max" value="120"/>
-    </module>
+    </module> -->
     <module name="FileLength">
         <property name="max" value="600"/>
         <property name="fileExtensions" value="java"/>

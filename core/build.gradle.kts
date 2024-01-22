@@ -4,6 +4,7 @@ plugins {
     id("net.kyori.blossom")
     id("net.kyori.indra.git")
     id("geyser.publish-conventions")
+    id("checkstyle")
 }
 
 dependencies {
@@ -83,6 +84,14 @@ tasks.processResources {
             "repository" to info.repository
         )
     }
+}
+
+tasks.withType<Checkstyle> {
+        configFile = rootProject.file("config/checkstyle/checkstyle.xml")
+}
+
+tasks.named("build") {
+    dependsOn("checkstyleMain", "checkstyleTest")
 }
 
 configure<BlossomExtension> {

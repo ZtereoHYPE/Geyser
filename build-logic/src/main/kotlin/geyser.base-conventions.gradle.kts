@@ -36,7 +36,8 @@ tasks {
         }
     }
 
-tasks.withType<Checkstyle> {
-    configFile = rootProject.file(".checkstyle/checkstyle.xml")
+    withType<Checkstyle> {
+        configFile = rootProject.file(".checkstyle/checkstyle.xml")
+    }
 }
 

@@ -35,12 +35,8 @@ tasks {
             )
         }
     }
-}
 
 tasks.withType<Checkstyle> {
     configFile = rootProject.file(".checkstyle/checkstyle.xml")
 }
 
-tasks.named("build") {
-    dependsOn("checkstyleMain", "checkstyleTest")
-}

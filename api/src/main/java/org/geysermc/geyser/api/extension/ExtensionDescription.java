@@ -59,21 +59,21 @@ public interface ExtensionDescription {
     String main();
 
     /**
-     * Gets the extension's major api version
+     * Gets the extension's major api version.
      *
      * @return the extension's major api version
      */
     int majorApiVersion();
 
     /**
-     * Gets the extension's minor api version
+     * Gets the extension's minor api version.
      *
      * @return the extension's minor api version
      */
     int minorApiVersion();
 
     /**
-     * Gets the extension's patch api version
+     * Gets the extension's patch api version.
      *
      * @return the extension's patch api version
      */

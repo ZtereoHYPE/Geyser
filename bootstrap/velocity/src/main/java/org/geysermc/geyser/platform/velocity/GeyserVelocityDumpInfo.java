@@ -48,7 +48,6 @@ public class GeyserVelocityDumpInfo extends BootstrapDumpInfo {
     private final List<PluginInfo> plugins;
 
     GeyserVelocityDumpInfo(ProxyServer proxy) {
-        super();
         this.platformName = proxy.getVersion().getName();
         this.platformVersion = proxy.getVersion().getVersion();
         this.platformVendor = proxy.getVersion().getVendor();

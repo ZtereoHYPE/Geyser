@@ -31,7 +31,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import java.util.Collection;
 
 /**
- * Manages Geyser {@link Extension}s
+ * Manages Geyser {@link Extension}s.
  */
 public abstract class ExtensionManager {
 
@@ -83,6 +83,8 @@ public abstract class ExtensionManager {
 
     /**
      * Loads all extensions from the given {@link ExtensionLoader}.
+     *
+     * @param extensionLoader the extension loader
      */
     protected final void loadAllExtensions(@NonNull ExtensionLoader extensionLoader) {
         extensionLoader.loadAllExtensions(this);

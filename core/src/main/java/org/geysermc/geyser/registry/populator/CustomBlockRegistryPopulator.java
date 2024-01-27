@@ -461,7 +461,7 @@ public class CustomBlockRegistryPopulator {
 
             // block_filters is a list of either blocks or queries for block tags
             // if these match the block the player is trying to place on, the placement is allowed by the client
-            List <NbtMap> blockFilters = new ArrayList<>();
+            List<NbtMap> blockFilters = new ArrayList<>();
             condition.blockFilters().forEach((value, type) -> {
                 NbtMapBuilder blockFilterBuilder = NbtMap.builder();
                 switch (type) {

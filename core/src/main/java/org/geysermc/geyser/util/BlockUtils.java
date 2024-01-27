@@ -82,16 +82,16 @@ public final class BlockUtils {
 
         switch (toolTier) {
             // Use intentional fall-throughs to check each tier with this block
-            default:
-                if (session.getTagCache().requiresStoneTool(blockMapping)) {
-                    return false;
-                }
             case "stone":
                 if (session.getTagCache().requiresIronTool(blockMapping)) {
                     return false;
                 }
             case "iron":
                 if (session.getTagCache().requiresDiamondTool(blockMapping)) {
+                    return false;
+                }
+            default:
+                if (session.getTagCache().requiresStoneTool(blockMapping)) {
                     return false;
                 }
         }

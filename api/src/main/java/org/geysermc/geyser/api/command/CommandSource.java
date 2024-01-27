@@ -40,14 +40,14 @@ public interface CommandSource {
     String name();
 
     /**
-     * Sends the given message to the command source
+     * Sends the given message to the command source.
      *
      * @param message the message to send
      */
     void sendMessage(@NonNull String message);
 
     /**
-     * Sends the given messages to the command source
+     * Sends the given messages to the command source.
      *
      * @param messages the messages to send
      */
@@ -72,7 +72,7 @@ public interface CommandSource {
     String locale();
 
     /**
-     * Checks if this command source has the given permission
+     * Checks if this command source has the given permission.
      *
      * @param permission The permission node to check
      * @return true if this command source has a permission

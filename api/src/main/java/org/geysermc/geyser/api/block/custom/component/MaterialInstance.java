@@ -33,28 +33,28 @@ import org.geysermc.geyser.api.GeyserApi;
  */
 public interface MaterialInstance {
     /**
-     * Gets the texture of the block
+     * Gets the texture of the block.
      *
      * @return The texture of the block.
      */
     @Nullable String texture();
 
     /**
-     * Gets the render method of the block
+     * Gets the render method of the block.
      *
      * @return The render method of the block.
      */
     @Nullable String renderMethod();
 
     /**
-     * Gets if the block should be dimmed on certain faces
+     * Gets if the block should be dimmed on certain faces.
      * 
      * @return If the block should be dimmed on certain faces.
      */
     boolean faceDimming();
 
     /**
-     * Gets if the block should have ambient occlusion
+     * Gets if the block should have ambient occlusion.
      * 
      * @return If the block should have ambient occlusion.
      */

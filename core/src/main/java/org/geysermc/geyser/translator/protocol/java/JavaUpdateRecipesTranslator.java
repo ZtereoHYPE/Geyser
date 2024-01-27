@@ -399,7 +399,7 @@ public class JavaUpdateRecipesTranslator extends PacketTranslator<ClientboundUpd
             for (ItemDescriptorWithCount item : set) {
                 for (int j = 0; j < totalCombinations / set.size(); j++) {
                     final int comboIndex = (i * x) + (j % x) + ((j / x) * set.size() * x);
-                    for (IntIterator it = slotSet.iterator(); it.hasNext(); ) {
+                    for (IntIterator it = slotSet.iterator(); it.hasNext();) {
                         combinations[comboIndex][it.nextInt()] = item;
                     }
                 }

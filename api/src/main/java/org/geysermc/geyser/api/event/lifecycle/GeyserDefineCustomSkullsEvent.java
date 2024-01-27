@@ -10,7 +10,7 @@ import org.geysermc.event.Event;
  */
 public abstract class GeyserDefineCustomSkullsEvent implements Event {
     /**
-     * The type of texture provided
+     * The type of texture provided.
      */
     public enum SkullTextureType {
         USERNAME,
@@ -20,7 +20,7 @@ public abstract class GeyserDefineCustomSkullsEvent implements Event {
     }
 
     /**
-     * Registers the given username, UUID, base64 encoded profile, or skin hash as a custom skull blocks
+     * Registers the given username, UUID, base64 encoded profile, or skin hash as a custom skull blocks.
      * @param texture the username, UUID, base64 encoded profile, or skin hash
      * @param type the type of texture provided
      */

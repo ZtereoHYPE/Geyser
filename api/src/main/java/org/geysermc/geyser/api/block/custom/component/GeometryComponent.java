@@ -37,21 +37,21 @@ import java.util.Map;
 public interface GeometryComponent {
     
     /**
-     * Gets the identifier of the geometry
+     * Gets the identifier of the geometry.
      *
      * @return The identifier of the geometry.
      */
     @NonNull String identifier();
 
     /**
-     * Gets the bone visibility of the geometry
+     * Gets the bone visibility of the geometry.
      *
      * @return The bone visibility of the geometry.
      */
     @Nullable Map<String, String> boneVisibility();
 
     /**
-     * Creates a builder for GeometryComponent
+     * Creates a builder for GeometryComponent.
      *
      * @return a builder for GeometryComponent.
      */

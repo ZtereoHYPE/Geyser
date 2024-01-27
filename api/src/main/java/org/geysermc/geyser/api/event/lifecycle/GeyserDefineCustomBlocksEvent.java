@@ -38,7 +38,7 @@ import org.geysermc.event.Event;
  */
 public abstract class GeyserDefineCustomBlocksEvent implements Event {
     /**
-     * Registers the given {@link CustomBlockData} as a custom block
+     * Registers the given {@link CustomBlockData} as a custom block.
      *
      * @param customBlockData the custom block to register
      */
@@ -46,7 +46,7 @@ public abstract class GeyserDefineCustomBlocksEvent implements Event {
 
     /**
      * Registers the given {@link CustomBlockState} as an override for the
-     * given java state identifier
+     * given java state identifier.
      * Java state identifiers are listed
      * <a href="https://raw.githubusercontent.com/GeyserMC/mappings/master/blocks.json">here</a>
      *
@@ -57,7 +57,7 @@ public abstract class GeyserDefineCustomBlocksEvent implements Event {
 
     /**
      * Registers the given {@link CustomBlockData} as an override for the
-     * given java item identifier
+     * given java item identifier.
      *
      * @param javaIdentifier the java item identifier to override
      * @param customBlockData the custom block data with which to override java item identifier
@@ -66,7 +66,7 @@ public abstract class GeyserDefineCustomBlocksEvent implements Event {
 
     /**
      * Registers the given {@link CustomBlockState} as an override for the
-     * given {@link JavaBlockState}
+     * given {@link JavaBlockState}.
      *
      * @param javaBlockState the java block state for the non-vanilla block
      * @param customBlockState the custom block state with which to override java state identifier

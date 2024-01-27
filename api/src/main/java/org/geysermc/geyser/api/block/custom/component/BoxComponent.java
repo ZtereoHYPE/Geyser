@@ -41,7 +41,7 @@ public record BoxComponent(float originX, float originY, float originZ, float si
     private static final BoxComponent EMPTY_BOX = new BoxComponent(0, 0, 0, 0, 0, 0);
 
     /**
-     * Gets a full box component
+     * Gets a full box component.
      *
      * @return A full box component
      */
@@ -50,7 +50,7 @@ public record BoxComponent(float originX, float originY, float originZ, float si
     }
 
     /**
-     * Gets an empty box component
+     * Gets an empty box component.
      *
      * @return An empty box component
      */
@@ -59,7 +59,7 @@ public record BoxComponent(float originX, float originY, float originZ, float si
     }
 
     /**
-     * Gets if the box component is empty
+     * Gets if the box component is empty.
      *
      * @return If the box component is empty.
      */

@@ -79,8 +79,8 @@ public interface GeyserApi extends GeyserApiBase {
      * @param apiClass the builder class
      * @param <R> the implementation type
      * @param <T> the API type
-     * @throws IllegalArgumentException if there is no provider for the specified API class
      * @return the builder instance
+     * @throws IllegalArgumentException if there is no provider for the specified API class
      */
     @NonNull
     <R extends T, T> R provider(@NonNull Class<T> apiClass, @Nullable Object... args);
@@ -129,7 +129,7 @@ public interface GeyserApi extends GeyserApiBase {
     Path packDirectory();
 
     /**
-     * Gets {@link PlatformType} the extension is running on
+     * Gets {@link PlatformType} the extension is running on.
      *
      * @return type of platform
      */

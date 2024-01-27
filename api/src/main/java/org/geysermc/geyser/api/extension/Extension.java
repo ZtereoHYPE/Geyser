@@ -40,7 +40,7 @@ import java.util.Objects;
 public interface Extension extends EventRegistrar {
 
     /**
-     * Gets if the extension is enabled
+     * Gets if the extension is enabled.
      *
      * @return true if the extension is enabled
      */
@@ -49,7 +49,7 @@ public interface Extension extends EventRegistrar {
     }
 
     /**
-     * Enables or disables the extension
+     * Enables or disables the extension.
      *
      * @param enabled if the extension should be enabled
      */
@@ -58,7 +58,7 @@ public interface Extension extends EventRegistrar {
     }
 
     /**
-     * Gets the extension's data folder
+     * Gets the extension's data folder.
      *
      * @return the extension's data folder
      */
@@ -88,7 +88,7 @@ public interface Extension extends EventRegistrar {
     }
 
     /**
-     * Gets the extension's name
+     * Gets the extension's name.
      *
      * @return the extension's name
      */
@@ -108,7 +108,7 @@ public interface Extension extends EventRegistrar {
     }
 
     /**
-     * Gets the extension's logger
+     * Gets the extension's logger.
      *
      * @return the extension's logger
      */
@@ -128,7 +128,7 @@ public interface Extension extends EventRegistrar {
     }
 
     /**
-     * Gets the {@link GeyserApiBase} instance
+     * Gets the {@link GeyserApiBase} instance.
      *
      * @return the geyser api instance
      */

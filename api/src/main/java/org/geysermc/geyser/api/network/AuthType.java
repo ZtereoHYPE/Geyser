@@ -43,7 +43,7 @@ public enum AuthType {
     private static final AuthType[] VALUES = values();
 
     /**
-     * Convert the AuthType string (from config) to the enum, ONLINE on fail
+     * Convert the AuthType string (from config) to the enum, ONLINE on fail.
      *
      * @param name AuthType string
      *

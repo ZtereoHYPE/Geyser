@@ -114,7 +114,7 @@ public class VersionedRegistry<V> extends AbstractMappedRegistry<Integer, V, Int
      * @param <V> the map value
      * @return a new registry with the given RegistryLoader supplier
      */
-    public static <I, V> VersionedRegistry< V> create(Supplier<RegistryLoader<I, Int2ObjectMap<V>>> registryLoader) {
+    public static <I, V> VersionedRegistry<V> create(Supplier<RegistryLoader<I, Int2ObjectMap<V>>> registryLoader) {
         return new VersionedRegistry<>(null, registryLoader.get());
     }
 
@@ -126,7 +126,7 @@ public class VersionedRegistry<V> extends AbstractMappedRegistry<Integer, V, Int
      * @param <V> the map value
      * @return a new registry with the given RegistryLoader supplier
      */
-    public static <I, V> VersionedRegistry< V> create(I input, Supplier<RegistryLoader<I, Int2ObjectMap<V>>> registryLoader) {
+    public static <I, V> VersionedRegistry<V> create(I input, Supplier<RegistryLoader<I, Int2ObjectMap<V>>> registryLoader) {
         return new VersionedRegistry<>(input, registryLoader.get());
     }
 }

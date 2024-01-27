@@ -43,7 +43,9 @@ public final class ClientEmoteEvent extends ConnectionEvent implements Cancellab
     }
 
     /**
-     * @return the emote ID that the Bedrock player is attempting to perform.
+     * Returns the emote ID that the Bedrock player is attempting to perform.
+     * 
+     * @return the emote ID.
      */
     @NonNull
     public String emoteId() {

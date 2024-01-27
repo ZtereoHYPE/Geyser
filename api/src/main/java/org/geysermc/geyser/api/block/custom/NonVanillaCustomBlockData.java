@@ -38,7 +38,7 @@ import java.util.List;
  */
 public interface NonVanillaCustomBlockData extends CustomBlockData {
     /**
-     * Gets the namespace of the custom block
+     * Gets the namespace of the custom block.
      *
      * @return The namespace of the custom block.
      */
@@ -46,7 +46,7 @@ public interface NonVanillaCustomBlockData extends CustomBlockData {
 
 
     /**
-     * Create a Builder for NonVanillaCustomBlockData
+     * Create a Builder for NonVanillaCustomBlockData.
      *
      * @return A NonVanillaCustomBlockData Builder
      */

@@ -44,7 +44,6 @@ public class GeyserBungeeDumpInfo extends BootstrapDumpInfo {
     private final List<PluginInfo> plugins;
 
     GeyserBungeeDumpInfo(ProxyServer proxy) {
-        super();
         this.platformName = proxy.getName();
         this.platformVersion = proxy.getVersion();
         this.onlineMode = proxy.getConfig().isOnlineMode();

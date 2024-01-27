@@ -31,7 +31,7 @@ import org.geysermc.geyser.api.event.ExtensionEventBus;
 import java.nio.file.Path;
 
 /**
- * The extension loader is responsible for loading, unloading, enabling and disabling extensions
+ * The extension loader is responsible for loading, unloading, enabling and disabling extensions.
  */
 public abstract class ExtensionLoader {
     /**

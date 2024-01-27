@@ -39,7 +39,7 @@ import java.util.Set;
 public interface CustomBlockComponents {
 
     /**
-     * Gets the selection box component
+     * Gets the selection box component.
      * Equivalent to "minecraft:selection_box"
      *
      * @return The selection box.
@@ -47,14 +47,14 @@ public interface CustomBlockComponents {
     @Nullable BoxComponent selectionBox();
 
     /**
-     * Gets the collision box component
+     * Gets the collision box component.
      * Equivalent to "minecraft:collision_box"
      * @return The collision box.
      */
     @Nullable BoxComponent collisionBox();
 
     /**
-     * Gets the display name component
+     * Gets the display name component.
      * Equivalent to "minecraft:display_name"
      *
      * @return The display name.
@@ -62,7 +62,7 @@ public interface CustomBlockComponents {
     @Nullable String displayName();
 
     /**
-     * Gets the geometry component
+     * Gets the geometry component.
      * Equivalent to "minecraft:geometry"
      *
      * @return The geometry.
@@ -70,7 +70,7 @@ public interface CustomBlockComponents {
     @Nullable GeometryComponent geometry();
 
     /**
-     * Gets the material instances component
+     * Gets the material instances component.
      * Equivalent to "minecraft:material_instances"
      *
      * @return The material instances.
@@ -78,7 +78,7 @@ public interface CustomBlockComponents {
     @NonNull Map<String, MaterialInstance> materialInstances();
 
     /**
-     * Gets the placement filter component
+     * Gets the placement filter component.
      * Equivalent to "minecraft:placement_filter"
      *
      * @return The placement filter.
@@ -86,7 +86,7 @@ public interface CustomBlockComponents {
     @Nullable List<PlacementConditions> placementFilter();
 
     /**
-     * Gets the destructible by mining component
+     * Gets the destructible by mining component.
      * Equivalent to "minecraft:destructible_by_mining"
      *
      * @return The destructible by mining value.
@@ -94,7 +94,7 @@ public interface CustomBlockComponents {
     @Nullable Float destructibleByMining();
 
     /**
-     * Gets the friction component
+     * Gets the friction component.
      * Equivalent to "minecraft:friction"
      *
      * @return The friction value.
@@ -102,7 +102,7 @@ public interface CustomBlockComponents {
     @Nullable Float friction();
 
     /**
-     * Gets the light emission component
+     * Gets the light emission component.
      * Equivalent to "minecraft:light_emission"
      *
      * @return The light emission value.
@@ -110,7 +110,7 @@ public interface CustomBlockComponents {
     @Nullable Integer lightEmission();
 
     /**
-     * Gets the light dampening component
+     * Gets the light dampening component.
      * Equivalent to "minecraft:light_dampening"
      *
      * @return The light dampening value.
@@ -118,7 +118,7 @@ public interface CustomBlockComponents {
     @Nullable Integer lightDampening();
 
     /**
-     * Gets the transformation component
+     * Gets the transformation component.
      * Equivalent to "minecraft:transformation"
      *
      * @return The transformation.
@@ -126,7 +126,7 @@ public interface CustomBlockComponents {
     @Nullable TransformationComponent transformation();
 
     /**
-     * Gets the unit cube component
+     * Gets the unit cube component.
      * Equivalent to "minecraft:unit_cube"
      *
      * @return The rotation.
@@ -134,7 +134,7 @@ public interface CustomBlockComponents {
     boolean unitCube();
 
     /**
-     * Gets if the block should place only air
+     * Gets if the block should place only air.
      * Equivalent to setting a dummy event to run on "minecraft:on_player_placing"
      * 
      * @return If the block should place only air.
@@ -142,7 +142,7 @@ public interface CustomBlockComponents {
     boolean placeAir();
 
     /**
-     * Gets the set of tags
+     * Gets the set of tags.
      * Equivalent to "tag:some_tag"
      * 
      * @return The set of tags.
@@ -150,7 +150,7 @@ public interface CustomBlockComponents {
     @NonNull Set<String> tags();
 
     /**
-     * Create a Builder for CustomBlockComponents
+     * Create a Builder for CustomBlockComponents.
      *
      * @return A CustomBlockComponents Builder
      */

@@ -158,10 +158,10 @@ public interface NonVanillaCustomItemData extends CustomItemData {
     boolean isChargeable();
 
     /**
-     * @deprecated Use {@link #displayHandheld()} instead.
      * Gets if the item is a tool. This is used to set the render type of the item, if the item is handheld.
      *
      * @return if the item is a tool
+     * @deprecated Use {@link #displayHandheld()} instead.
      */
     @Deprecated
     default boolean isTool() {

@@ -49,7 +49,6 @@ public class GeyserSpigotDumpInfo extends BootstrapDumpInfo {
 
     @SuppressWarnings("deprecation")
     GeyserSpigotDumpInfo() {
-        super();
         this.platformName = Bukkit.getName();
         this.platformVersion = Bukkit.getVersion();
         this.platformAPIVersion = Bukkit.getBukkitVersion();

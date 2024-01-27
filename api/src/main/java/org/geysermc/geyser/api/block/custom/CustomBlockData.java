@@ -40,21 +40,21 @@ import java.util.Map;
  */
 public interface CustomBlockData {
     /**
-     * Gets the name of the custom block
+     * Gets the name of the custom block.
      *
      * @return The name of the custom block.
      */
     @NonNull String name();
 
     /**
-     * Gets the identifier of the custom block
+     * Gets the identifier of the custom block.
      *
      * @return The identifier of the custom block.
      */
     @NonNull String identifier();
 
     /**
-     * Gets if the custom block is included in the creative inventory
+     * Gets if the custom block is included in the creative inventory.
      * 
      * @return If the custom block is included in the creative inventory.
      */
@@ -75,7 +75,7 @@ public interface CustomBlockData {
     @Nullable String creativeGroup();
 
     /**
-     * Gets the components of the custom block
+     * Gets the components of the custom block.
      *
      * @return The components of the custom block.
      */
@@ -83,35 +83,35 @@ public interface CustomBlockData {
 
     /**
      * Gets the custom block's map of block property names to CustomBlockProperty
-     * objects
+     * objects.
      *
      * @return The custom block's map of block property names to CustomBlockProperty objects.
      */
     @NonNull Map<String, CustomBlockProperty<?>> properties();
 
     /**
-     * Gets the list of the custom block's permutations
+     * Gets the list of the custom block's permutations.
      *
      * @return The permutations of the custom block.
      */
     @NonNull List<CustomBlockPermutation> permutations();
 
     /**
-     * Gets the custom block's default block state
+     * Gets the custom block's default block state.
      *
      * @return The default block state of the custom block.
      */
     @NonNull CustomBlockState defaultBlockState();
 
     /**
-     * Gets a builder for a custom block state
+     * Gets a builder for a custom block state.
      *
      * @return The builder for a custom block state.
      */
     CustomBlockState.@NonNull Builder blockStateBuilder();
 
     /**
-     * Create a Builder for CustomBlockData
+     * Create a Builder for CustomBlockData.
      *
      * @return A CustomBlockData Builder
      */

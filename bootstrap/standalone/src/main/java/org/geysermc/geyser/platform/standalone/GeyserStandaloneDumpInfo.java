@@ -33,7 +33,6 @@ public class GeyserStandaloneDumpInfo extends BootstrapDumpInfo {
     private final boolean isGui;
 
     GeyserStandaloneDumpInfo(GeyserStandaloneBootstrap bootstrap) {
-        super();
         this.isGui = bootstrap.isUseGui();
     }
 }

@@ -94,7 +94,7 @@ public interface GeyserBedrockPingEvent extends Event {
     int playerCount();
 
     /**
-     * Gets the maximum number of players that can join this server
+     * Gets the maximum number of players that can join this server.
      *
      * @return maximum number of players that can join
      */

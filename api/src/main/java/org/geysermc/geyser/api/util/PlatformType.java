@@ -27,6 +27,8 @@ package org.geysermc.geyser.api.util;
 
 /**
  * Represents the platform Geyser is running on.
+ * 
+ * @param platformName The name of the platform
  */
 public record PlatformType(String platformName) {
 

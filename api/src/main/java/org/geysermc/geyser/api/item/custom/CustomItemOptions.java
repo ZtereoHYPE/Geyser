@@ -32,7 +32,7 @@ import org.geysermc.geyser.api.util.TriState;
 import java.util.OptionalInt;
 
 /**
- * This class represents the different ways you can register custom items
+ * This class represents the different ways you can register custom items.
  */
 public interface CustomItemOptions {
     /**
@@ -65,7 +65,7 @@ public interface CustomItemOptions {
     boolean defaultItem();
 
     /**
-     * Checks if the item has at least one option set
+     * Checks if the item has at least one option set.
      *
      * @return true if the item at least one options set
      */

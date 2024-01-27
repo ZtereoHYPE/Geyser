@@ -65,7 +65,7 @@ public class PropertyType {
     private final Class<?> typeClass;
 
     /**
-     * Gets the class of the property type
+     * Gets the class of the property type.
      *
      * @return The class of the property type.
      */

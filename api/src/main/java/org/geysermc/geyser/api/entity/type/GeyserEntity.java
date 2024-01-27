@@ -33,7 +33,9 @@ import org.checkerframework.checker.index.qual.NonNegative;
  */
 public interface GeyserEntity {
     /**
-     * @return the entity ID that the server has assigned to this entity.
+     * Returns the entity ID that the server has assigned to this entity.
+     * 
+     * @return the entity ID.
      */
     @NonNegative
     int javaId();

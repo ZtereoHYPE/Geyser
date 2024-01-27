@@ -16,7 +16,7 @@ See https://checkstyle.org/ for more information.
         </module>
 
         <!-- Javadoc Checks -->
-        <!-- <module name="AtclauseOrder"/>
+        <module name="AtclauseOrder"/>
         <module name="NonEmptyAtclauseDescription"/>
         <module name="JavadocStyle"/>
         <module name="SummaryJavadocCheck"/>
@@ -37,7 +37,7 @@ See https://checkstyle.org/ for more information.
         <module name="JavadocContentLocationCheck"/>
         <module name="JavadocBlockTagLocation"/>
         <module name="JavadocMissingLeadingAsterisk"/>
-        <module name="JavadocMissingWhitespaceAfterAsterisk"/> -->
+        <module name="JavadocMissingWhitespaceAfterAsterisk"/>
 
         <!-- Code Quality -->
         <module name="ArrayTypeStyle"/>

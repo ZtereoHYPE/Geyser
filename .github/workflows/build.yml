@@ -40,6 +40,13 @@ jobs:
         with:
           arguments: build
           gradle-home-cache-cleanup: true
+      
+      - name: Checkstyle
+        # See https://docs.gradle.org/current/userguide/checkstyle_plugin.html
+        uses: gradle/gradle-build-action@3bfe3a46584a206fb8361cdedd0647b0c4204232
+        with:
+          arguments: checkstyleMain checkstyleTest
+          gradle-home-cache-cleanup: true
           
       - name: Archive artifacts (Geyser Fabric)
         # See https://github.com/actions/upload-artifact/commits

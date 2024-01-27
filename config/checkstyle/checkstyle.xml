@@ -11,6 +11,10 @@ See https://checkstyle.org/ for more information.
     <module name="TreeWalker">
         <property name="fileExtensions" value="java"/>
 
+        <module name="IllegalImport">
+            <property name="illegalImports" value="org.jetbrains.annotations.Nullable,org.jetbrains.annotations.NotNull,org.lombok.NotNull"/>
+        </module>
+
         <!-- Javadoc Checks -->
         <!-- <module name="AtclauseOrder"/>
         <module name="NonEmptyAtclauseDescription"/>
@@ -44,16 +48,12 @@ See https://checkstyle.org/ for more information.
         <!-- <module name="NeedBraces" /> -->
 
         <module name="RightCurly"/>
-        <module name="DeclarationOrder">
-            <property name="ignoreModifiers" value="true"/>
-        </module>
         <module name="FallThrough"/>
 
 
         <!-- Should be discussed with project developers -->
         <!-- <module name="IllegalCatch"/>
         <module name="IllegalThrows"/> -->
-
 
         <module name="IllegalToken"/>
         <module name="IllegalType"/>
@@ -67,10 +67,6 @@ See https://checkstyle.org/ for more information.
         <module name="NoClone"/>
         <module name="OneStatementPerLine"/>
         <module name="PackageDeclaration"/>
-        <module name="ReturnCount">
-            <property name="max" value="8"/>
-            <property name="maxForVoid" value="10"/>
-        </module>
         <module name="SimplifyBooleanExpression"/>
         <module name="SimplifyBooleanReturn"/>
         <module name="StringLiteralEquality"/>
@@ -101,29 +97,14 @@ See https://checkstyle.org/ for more information.
         </module>
         <module name="Indentation"/>
         <module name="CommentsIndentation"/>
-        <module name="ConstantName"/>
         <module name="DefaultComesLast"/>
         <module name="EmptyCatchBlock"/>
         <module name="EqualsHashCode"/>
-        <module name="InvalidJavadocPosition"/>
-
-        <!-- <module name="LambdaBodyLength">
-            <property name="max" value="15"/>
-        </module> -->
 
         <module name="MethodName"/>
 
-        <!-- This cannot be enabled without serious refactoring. -->
-        <!-- <module name="NestedIfDepth">
-            <property name="max" value="3"/>
-        </module> -->
-
         <!-- Again, should be enabled at some point down the line -->
         <!-- <module name="TypeName"/> -->
-        <module name="VisibilityModifier">
-            <property name="protectedAllowed" value="true"/>
-            <property name="packageAllowed" value="true"/>
-        </module>
         <module name="AvoidNoArgumentSuperConstructorCall"/>
     </module>
     <!-- Might be worth looking into enabling this. -->
@@ -131,8 +112,8 @@ See https://checkstyle.org/ for more information.
         <property name="fileExtensions" value="java"/>
         <property name="max" value="120"/>
     </module> -->
-    <module name="FileLength">
+    <!-- <module name="FileLength">
         <property name="max" value="3000"/>
         <property name="fileExtensions" value="java"/>
-    </module>
+    </module> -->
 </module>

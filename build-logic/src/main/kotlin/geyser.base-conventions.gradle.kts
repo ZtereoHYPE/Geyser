@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     id("net.kyori.indra")
+    id("checkstyle")
 }
 
 dependencies {
@@ -34,4 +35,12 @@ tasks {
             )
         }
     }
+}
+
+tasks.withType<Checkstyle> {
+    configFile = rootProject.file(".checkstyle/checkstyle.xml")
+}
+
+tasks.named("build") {
+    dependsOn("checkstyleMain", "checkstyleTest")
 }

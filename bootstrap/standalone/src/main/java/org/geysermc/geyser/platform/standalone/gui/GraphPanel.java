@@ -56,15 +56,28 @@ public final class GraphPanel extends JPanel {
     @Setter
     private String xLabel = "";
 
+    /**
+     * Create a new graph panel
+     */
     public GraphPanel() {
         setPreferredSize(new Dimension(200 - (padding * 2), 150 - (padding * 2)));
     }
 
+    /**
+     * Sets the values to be displayed on the graph
+     * 
+     * @param newValues - The new values to be displayed
+     */
     public void setValues(Collection<Integer> newValues) {
         values.clear();
         addValues(newValues);
     }
 
+    /**
+     * Adds the values to the graph
+     * 
+     * @param newValues - The new values to be displayed
+     */
     public void addValues(Collection<Integer> newValues) {
         values.addAll(newValues);
         updateUI();

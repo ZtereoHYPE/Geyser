@@ -50,6 +50,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
 
+/**
+ * This is the GUI interface for Geyser-Standalone.
+ */
 public class GeyserStandaloneGUI {
 
     private static final long MEGABYTE = 1024L * 1024L;
@@ -67,7 +70,7 @@ public class GeyserStandaloneGUI {
     private final DefaultTableModel playerTableModel = new DefaultTableModel();
 
     /**
-     * Create and show the Geyser-Standalone GUI
+     * Create and show the Geyser-Standalone GUI.
      *
      * @param logger the logger for determining debug mode, and executing commands from the console
      */

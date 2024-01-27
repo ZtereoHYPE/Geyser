@@ -62,6 +62,9 @@ import java.text.MessageFormat;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * The main class for Geyser-Standalone
+ */
 public class GeyserStandaloneBootstrap implements GeyserBootstrap {
 
     private GeyserCommandManager geyserCommandManager;
@@ -81,6 +84,11 @@ public class GeyserStandaloneBootstrap implements GeyserBootstrap {
 
     private static final Map<String, String> argsConfigKeys = new HashMap<>();
 
+    /**
+     * The main method for Geyser-Standalone
+     * 
+     * @param args - The command line arguments
+     */
     public static void main(String[] args) {
         if (System.getProperty("io.netty.leakDetection.level") == null) {
             ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.DISABLED); // Can eat performance
@@ -164,6 +172,12 @@ public class GeyserStandaloneBootstrap implements GeyserBootstrap {
         bootstrap.onEnable(useGuiOpts, configFilenameOpt);
     }
 
+    /**
+     * Called when Geyser is enabled
+     * 
+     * @param useGui - If the GUI should be used
+     * @param configFilename - The filename of the config
+     */
     public void onEnable(boolean useGui, String configFilename) {
         this.configFilename = configFilename;
         this.useGui = useGui;

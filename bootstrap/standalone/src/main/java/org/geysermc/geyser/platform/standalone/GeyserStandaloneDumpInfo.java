@@ -28,10 +28,20 @@ package org.geysermc.geyser.platform.standalone;
 import lombok.Getter;
 import org.geysermc.geyser.dump.BootstrapDumpInfo;
 
+/**
+ * Represents the dump info for Geyser Standalone.
+ * 
+ * @see BootstrapDumpInfo
+ */
 @Getter
 public class GeyserStandaloneDumpInfo extends BootstrapDumpInfo {
     private final boolean isGui;
 
+    /**
+     * Creates a new dump info object.
+     * 
+     * @param bootstrap - the bootstrap instance
+     */
     GeyserStandaloneDumpInfo(GeyserStandaloneBootstrap bootstrap) {
         super();
         this.isGui = bootstrap.isUseGui();

@@ -31,11 +31,13 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.config.Configurator;
 import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.GeyserLogger;
-import org.geysermc.geyser.command.GeyserCommandSource;
 import org.geysermc.geyser.text.ChatColor;
 
+/**
+ * Represents the logger for Geyser Standalone.
+ */
 @Slf4j
-public class GeyserStandaloneLogger extends SimpleTerminalConsole implements GeyserLogger, GeyserCommandSource {
+public class GeyserStandaloneLogger extends SimpleTerminalConsole implements GeyserLogger {
 
     @Override
     protected boolean isRunning() {

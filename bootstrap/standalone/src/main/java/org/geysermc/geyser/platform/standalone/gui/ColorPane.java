@@ -31,7 +31,8 @@ import java.awt.*;
 import java.io.Serial;
 
 /**
- * This class was based on this <a href="https://stackoverflow.com/a/6899478/5299903">code</a>
+ * This class was based on this
+ * <a href="https://stackoverflow.com/a/6899478/5299903">code</a>
  */
 public class ColorPane extends JTextPane {
 
@@ -43,7 +44,8 @@ public class ColorPane extends JTextPane {
 
     /**
      * Append the given string in the given color to the text pane
-     *  @param c The color
+     * 
+     * @param c The color
      * @param s The text
      */
     private void append(Color c, String s) {
@@ -59,12 +61,13 @@ public class ColorPane extends JTextPane {
     }
 
     /**
-     * Extract the ANSI color codes from the string and add each part to the text pane
+     * Extract the ANSI color codes from the string and add each part to the text
+     * pane
      *
      * @param s The text to parse
      */
     public void appendANSI(String s) { // convert ANSI color codes first
-        int aPos = 0;   // current char position in addString
+        int aPos = 0; // current char position in addString
         int aIndex; // index of next Escape sequence
         int mIndex; // index of "m" terminating Escape sequence
         String tmpString;
@@ -86,7 +89,6 @@ public class ColorPane extends JTextPane {
                 aPos = aIndex; // aPos is now at the beginning of the first escape sequence
             }
 
-
             // while there's text in the input buffer
             while (stillSearching) {
                 mIndex = addString.indexOf("m", aPos); // find the end of the escape sequence
@@ -95,7 +97,7 @@ public class ColorPane extends JTextPane {
                     stillSearching = false;
                     continue;
                 } else {
-                    tmpString = addString.substring(aPos, mIndex+1);
+                    tmpString = addString.substring(aPos, mIndex + 1);
                     colorCurrent = ANSIColor.fromANSI(tmpString).getColor();
                 }
                 aPos = mIndex + 1;
@@ -110,7 +112,8 @@ public class ColorPane extends JTextPane {
                     continue; // jump out of loop early, as the whole string has been sent now
                 }
 
-                // there is another escape sequence, so send part of the string and prepare for the next
+                // there is another escape sequence, so send part of the string and prepare for
+                // the next
                 tmpString = addString.substring(aPos, aIndex);
                 aPos = aIndex;
                 append(colorCurrent, tmpString);

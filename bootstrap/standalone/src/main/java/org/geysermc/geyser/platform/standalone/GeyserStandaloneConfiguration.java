@@ -32,9 +32,18 @@ import org.geysermc.geyser.configuration.GeyserJacksonConfiguration;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+/**
+ * Represents the configuration for Geyser Standalone.
+ */
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class GeyserStandaloneConfiguration extends GeyserJacksonConfiguration {
+
+    /**
+     * This will return the path to the Floodgate key file.
+     * 
+     * @return the path to the Floodgate key file
+     */
     @Override
     public Path getFloodgateKeyPath() {
         return Paths.get(getFloodgateKeyFile());

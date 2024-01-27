@@ -38,25 +38,39 @@ import java.lang.reflect.Constructor;
 import java.net.InetSocketAddress;
 
 /**
- * This class is used if possible, so listeners listening for PaperServerListPingEvent exclusively have their changes
+ * This class is used if possible, so listeners listening for
+ * PaperServerListPingEvent exclusively have their changes
  * applied.
  */
 public final class GeyserPaperPingPassthrough implements IGeyserPingPassthrough {
-    private static final Constructor<PaperServerListPingEvent> OLD_CONSTRUCTOR = ReflectedNames.getOldPaperPingConstructor();
+    private static final Constructor<PaperServerListPingEvent> OLD_CONSTRUCTOR = ReflectedNames
+            .getOldPaperPingConstructor();
 
     private final GeyserSpigotLogger logger;
 
+    /**
+     * Creates a new ping passthrough.
+     * 
+     * @param logger - the logger
+     */
     public GeyserPaperPingPassthrough(GeyserSpigotLogger logger) {
         this.logger = logger;
     }
 
+    /**
+     * Gets the ping information from a specific address.
+     * 
+     * @param inetSocketAddress - the address
+     * @return the ping information
+     */
     @SuppressWarnings("deprecation")
     @Nullable
     @Override
     public GeyserPingInfo getPingInformation(InetSocketAddress inetSocketAddress) {
         try {
-            // We'd rather *not* use deprecations here, but unfortunately any Adventure class would be relocated at
-            // runtime because we still have to shade in our own Adventure class. For now.
+            // We'd rather *not* use deprecations here, but unfortunately any Adventure
+            // class would be relocated at runtime because we still have to shade in our own
+            // Adventure class. For now.
             PaperServerListPingEvent event;
             if (OLD_CONSTRUCTOR != null) {
                 // 1.19, removed in 1.19.4

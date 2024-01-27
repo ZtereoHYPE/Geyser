@@ -38,11 +38,19 @@ import org.geysermc.geyser.platform.spigot.world.manager.GeyserSpigotWorldManage
 import org.geysermc.geyser.registry.BlockRegistries;
 import org.geysermc.geyser.session.GeyserSession;
 
+/**
+ * This class handles block placement events in Spigot.
+ */
 @AllArgsConstructor
 public class GeyserSpigotBlockPlaceListener implements Listener {
     private final GeyserImpl geyser;
     private final GeyserSpigotWorldManager worldManager;
 
+    /**
+     * Handles block placement events in Spigot.
+     * 
+     * @param event - the event
+     */
     @EventHandler
     public void place(final BlockPlaceEvent event) {
         GeyserSession session = geyser.connectionByUuid(event.getPlayer().getUniqueId());

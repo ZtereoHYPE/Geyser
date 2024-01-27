@@ -80,6 +80,11 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.logging.Level;
 
+/**
+ * The main class for Geyser-Spigot, this is the class that Spigot loads.
+ * 
+ * @see {@link plugin.yml}
+ */
 public class GeyserSpigotPlugin extends JavaPlugin implements GeyserBootstrap {
     /**
      * Determines if the plugin has been ran once before, including before /geyser reload.

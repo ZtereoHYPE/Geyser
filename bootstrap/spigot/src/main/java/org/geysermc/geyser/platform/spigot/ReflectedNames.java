@@ -35,10 +35,13 @@ import java.lang.reflect.Constructor;
 import java.net.InetAddress;
 
 /**
- * A utility class for checking on the existence of classes, constructors, fields, methods
+ * A utility class for checking on the existence of classes, constructors, fields, methods.
  */
 public final class ReflectedNames {
 
+    /**
+     * @return if the Paper ping event is present
+     */
     static boolean checkPaperPingEvent() {
         try {
             Class.forName("com.destroystokyo.paper.event.server.PaperServerListPingEvent");
@@ -48,10 +51,16 @@ public final class ReflectedNames {
         }
     }
 
+    /**
+     * @return if the new Spigot ping event constructor is present
+     */
     static boolean newSpigotPingConstructorExists() {
         return getConstructor(ServerListPingEvent.class, InetAddress.class, String.class, boolean.class, int.class, int.class) != null;
     }
 
+    /**
+     * @return if the old Paper ping event constructor is present
+     */
     static @Nullable Constructor<PaperServerListPingEvent> getOldPaperPingConstructor() {
         if (getConstructor(PaperServerListPingEvent.class, StatusClient.class, String.class, int.class,
                 int.class, String.class, int.class, CachedServerIcon.class) != null) {

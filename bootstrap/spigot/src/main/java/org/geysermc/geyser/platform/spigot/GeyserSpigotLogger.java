@@ -33,6 +33,9 @@ import org.geysermc.geyser.GeyserLogger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * This is the Spigot implementation for the {@link GeyserLogger}
+ */
 @AllArgsConstructor
 public class GeyserSpigotLogger implements GeyserLogger {
     private final Logger logger;

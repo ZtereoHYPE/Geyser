@@ -32,7 +32,6 @@ import org.bukkit.event.server.ServerListPingEvent;
 import org.bukkit.util.CachedServerIcon;
 import org.checkerframework.checker.nullness.qual.NonNull;
 import org.checkerframework.checker.nullness.qual.Nullable;
-import org.geysermc.geyser.network.GameProtocol;
 import org.geysermc.geyser.ping.GeyserPingInfo;
 import org.geysermc.geyser.ping.IGeyserPingPassthrough;
 
@@ -41,11 +40,20 @@ import java.net.InetSocketAddress;
 import java.util.Collections;
 import java.util.Iterator;
 
+/**
+ * This is the Spigot implementation for the {@link IGeyserPingPassthrough}
+ */
 @AllArgsConstructor
 public class GeyserSpigotPingPassthrough implements IGeyserPingPassthrough {
 
     private final GeyserSpigotLogger logger;
 
+    /**
+     * Gets the ping information for the given address.
+     * 
+     * @param inetSocketAddress - the address to ping
+     * @return the ping information
+     */
     @SuppressWarnings("deprecation")
     @Override
     public @Nullable GeyserPingInfo getPingInformation(InetSocketAddress inetSocketAddress) {

@@ -34,6 +34,11 @@ import org.geysermc.geyser.text.AsteriskSerializer;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is the Spigot implementation of {@link BootstrapDumpInfo}.
+ * 
+ * It adds Spigot-specific information to the dump.
+ */
 @Getter
 public class GeyserSpigotDumpInfo extends BootstrapDumpInfo {
 
@@ -47,6 +52,9 @@ public class GeyserSpigotDumpInfo extends BootstrapDumpInfo {
     private final int serverPort;
     private final List<PluginInfo> plugins;
 
+    /**
+     * Creates a new Spigot dump info.
+     */
     @SuppressWarnings("deprecation")
     GeyserSpigotDumpInfo() {
         super();

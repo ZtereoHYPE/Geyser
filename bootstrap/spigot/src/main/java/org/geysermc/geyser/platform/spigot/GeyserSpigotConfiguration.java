@@ -35,17 +35,29 @@ import org.geysermc.geyser.configuration.GeyserJacksonConfiguration;
 
 import java.nio.file.Path;
 
+/**
+ * Represents the Geyser configuration for Spigot.
+ *
+ * @see {@link GeyserJacksonConfiguration}
+ */
 @Getter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class GeyserSpigotConfiguration extends GeyserJacksonConfiguration {
     @JsonIgnore
     private Path floodgateKeyPath;
 
+    /**
+     * This will load the Floodgate keyPath from the Floodgate plugin if it is
+     * loaded.
+     *
+     * @param plugin - the Geyser plugin instance
+     */
     public void loadFloodgate(GeyserSpigotPlugin plugin) {
         Plugin floodgate = Bukkit.getPluginManager().getPlugin("floodgate");
         Path geyserDataFolder = plugin.getDataFolder().toPath();
         Path floodgateDataFolder = floodgate != null ? floodgate.getDataFolder().toPath() : null;
 
-        floodgateKeyPath = FloodgateKeyLoader.getKeyPath(this, floodgateDataFolder, geyserDataFolder, plugin.getGeyserLogger());
+        floodgateKeyPath = FloodgateKeyLoader.getKeyPath(this, floodgateDataFolder, geyserDataFolder,
+                plugin.getGeyserLogger());
     }
 }

@@ -34,6 +34,9 @@ import org.geysermc.geyser.command.GeyserCommandManager;
 
 import java.lang.reflect.Field;
 
+/**
+ * This is the Spigot implementation for the {@link GeyserCommandManager}
+ */
 public class GeyserSpigotCommandManager extends GeyserCommandManager {
 
     private static final CommandMap COMMAND_MAP;
@@ -56,6 +59,11 @@ public class GeyserSpigotCommandManager extends GeyserCommandManager {
         COMMAND_MAP = commandMap;
     }
 
+    /**
+     * Creates a new command manager.
+     * 
+     * @param geyser - the Geyser instance
+     */
     public GeyserSpigotCommandManager(GeyserImpl geyser) {
         super(geyser);
     }
@@ -66,6 +74,11 @@ public class GeyserSpigotCommandManager extends GeyserCommandManager {
         return cmd != null ? cmd.getDescription() : "";
     }
 
+    /**
+     * Gets the command map.
+     * 
+     * @return - the command map
+     */
     public static CommandMap getCommandMap() {
         return COMMAND_MAP;
     }

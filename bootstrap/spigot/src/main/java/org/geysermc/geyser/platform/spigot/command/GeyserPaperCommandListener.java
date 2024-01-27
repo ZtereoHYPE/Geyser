@@ -37,13 +37,24 @@ import java.net.InetSocketAddress;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * This listener will handle command requests on Paper through the
+ * AsyncPlayerSendCommandsEvent. This is used to inject completions
+ * in the brigadier tree.
+ */
 public final class GeyserPaperCommandListener implements Listener {
 
+    /**
+     * This event will fire when commands are send to the client.
+     * 
+     * @param event - the event
+     */
     @SuppressWarnings("UnstableApiUsage")
     @EventHandler
     public void onCommandSend(AsyncPlayerSendCommandsEvent<?> event) {
-        // Documentation says to check (event.isAsynchronous() || !event.hasFiredAsync()), but as of Paper 1.18.2
-        // event.hasFiredAsync is never true
+        // Documentation says to check
+        // (event.isAsynchronous() || !event.hasFiredAsync()),
+        // but as of Paper 1.18.2 event.hasFiredAsync is never true
         if (event.isAsynchronous()) {
             CommandNode<?> geyserBrigadier = event.getCommandNode().getChild("geyser");
             if (geyserBrigadier != null) {
@@ -67,8 +78,15 @@ public final class GeyserPaperCommandListener implements Listener {
     }
 
     /**
-     * This early on, there is a rare chance that Geyser has yet to process the connection. We'll try to minimize that
-     * chance, though.
+     * This early on, there is a rare chance that Geyser has yet to process the
+     * connection. We'll try to minimize that chance, though.
+     * 
+     * This method will do a best effort to determine if the player is a Java player
+     * by looking at connection information. If it can't determine, it will assume
+     * it is a Java player.
+     * 
+     * @param player - the player to check
+     * @return true if the player is probably a Java player
      */
     private boolean isProbablyJavaPlayer(Player player) {
         if (GeyserImpl.getInstance().connectionByUuid(player.getUniqueId()) != null) {

@@ -27,16 +27,32 @@ package org.geysermc.geyser.platform.spigot;
 
 import org.geysermc.geyser.GeyserMain;
 
+/**
+ * This is the Spigot implementation of {@link GeyserMain}.
+ * 
+ * It is used to show a message in case someone tries run the Geyser Spigot
+ * plugin directly.
+ */
 public class GeyserSpigotMain extends GeyserMain {
 
+    /**
+     * This is the main method of the Spigot implementation of Geyser.
+     * 
+     * It just shows a message telling the user to put the plugin in the
+     * plugins folder.
+     * 
+     * @param args - the command line arguments
+     */
     public static void main(String[] args) {
         new GeyserSpigotMain().displayMessage();
     }
 
+    @Override
     public String getPluginType() {
         return "Spigot or Paper (recommended)";
     }
-
+    
+    @Override
     public String getPluginFolder() {
         return "plugins";
     }

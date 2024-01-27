@@ -37,6 +37,14 @@ import org.geysermc.geyser.platform.spigot.GeyserSpigotPlugin;
  */
 public final class GeyserBrigadierSupport {
 
+    /**
+     * Load Brigadier support for Geyser commands.
+     * 
+     * If possible, it will also register a listener for the AsyncPlayerSendCommandsEvent
+     * 
+     * @param plugin the Geyser plugin instance
+     * @param pluginCommand the plugin command to register in
+     */
     public static void loadBrigadier(GeyserSpigotPlugin plugin, PluginCommand pluginCommand) {
         // Enable command completions if supported
         // This is beneficial because this is sent over the network and Bedrock can see it

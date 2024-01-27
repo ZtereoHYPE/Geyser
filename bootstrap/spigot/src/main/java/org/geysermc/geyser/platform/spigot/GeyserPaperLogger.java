@@ -31,16 +31,29 @@ import org.bukkit.plugin.Plugin;
 
 import java.util.logging.Logger;
 
+/**
+ * This is the Paper implementation for the {@link GeyserSpigotLogger}
+ * 
+ * It uses the Paper component logger to log messages.
+ */
 public final class GeyserPaperLogger extends GeyserSpigotLogger {
     private final ComponentLogger componentLogger;
 
+    /**
+     * Creates a new Paper logger.
+     * 
+     * @param plugin - the Geyser plugin instance
+     * @param logger - the logger to use
+     * @param debug  - whether debug messages should be logged
+     */
     public GeyserPaperLogger(Plugin plugin, Logger logger, boolean debug) {
         super(logger, debug);
         componentLogger = plugin.getComponentLogger();
     }
 
     /**
-     * Since 1.18.2 this is required so legacy format symbols don't show up in the console for colors
+     * Since 1.18.2 this is required so legacy format symbols don't show up in the
+     * console for colors
      */
     @Override
     public void sendMessage(Component message) {

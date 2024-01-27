@@ -34,8 +34,16 @@ import org.geysermc.geyser.GeyserImpl;
 import org.geysermc.geyser.platform.spigot.command.SpigotCommandSource;
 import org.geysermc.geyser.util.VersionCheckUtils;
 
+/**
+ * This listener is used to notify players with the update permission when a new Geyser version is available.
+ */
 public final class GeyserSpigotUpdateListener implements Listener {
 
+    /**
+     * Handles the player join and sends a message if a new Geyser version is available.
+     * 
+     * @param event - the event
+     */
     @EventHandler
     public void onPlayerJoin(final PlayerJoinEvent event) {
         if (GeyserImpl.getInstance().getConfig().isNotifyOnNewBedrockUpdate()) {

@@ -52,21 +52,42 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * This class handles piston firing events in Spigot.
+ */
 public class GeyserPistonListener implements Listener {
     private final GeyserImpl geyser;
     private final GeyserSpigotWorldManager worldManager;
 
+    /**
+     * Creates a new piston listener.
+     * 
+     * @param geyser       - the Geyser instance
+     * @param worldManager - the world manager
+     */
     public GeyserPistonListener(GeyserImpl geyser, GeyserSpigotWorldManager worldManager) {
         this.geyser = geyser;
         this.worldManager = worldManager;
     }
 
-    // The handlers' parent class cannot be registered
+    /**
+     * Handles piston extension events.
+     * 
+     * Should be noted that the handlers' parent class cannot be registered
+     * as a listener, as it is not a Bukkit event.
+     * 
+     * @param event - the event
+     */
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPistonExtend(BlockPistonExtendEvent event) {
         onPistonAction(event);
     }
 
+    /**
+     * Handles piston retraction events.
+     * 
+     * @param event - the event
+     */
     @EventHandler(priority = EventPriority.MONITOR)
     public void onPistonRetract(BlockPistonRetractEvent event) {
         onPistonAction(event);
@@ -102,10 +123,12 @@ public class GeyserPistonListener implements Listener {
                 continue;
             }
 
-            // Trying to grab the blocks from the world like other platforms would result in the moving piston block
+            // Trying to grab the blocks from the world like other platforms would result in
+            // the moving piston block
             // being returned instead.
             if (!blocksFilled) {
-                List<Block> blocks = isExtend ? ((BlockPistonExtendEvent) event).getBlocks() : ((BlockPistonRetractEvent) event).getBlocks();
+                List<Block> blocks = isExtend ? ((BlockPistonExtendEvent) event).getBlocks()
+                        : ((BlockPistonRetractEvent) event).getBlocks();
                 for (Block block : blocks) {
                     Location attachedLocation = block.getLocation();
                     int blockId = worldManager.getBlockNetworkId(block);
@@ -123,8 +146,8 @@ public class GeyserPistonListener implements Listener {
 
             session.executeInEventLoop(() -> {
                 PistonCache pistonCache = session.getPistonCache();
-                PistonBlockEntity blockEntity = pistonCache.getPistons().computeIfAbsent(position, pos ->
-                        new PistonBlockEntity(session, position, orientation, sticky, !isExtend));
+                PistonBlockEntity blockEntity = pistonCache.getPistons().computeIfAbsent(position,
+                        pos -> new PistonBlockEntity(session, position, orientation, sticky, !isExtend));
                 blockEntity.setAction(type, attachedBlocks);
             });
         }

@@ -25,27 +25,34 @@
 
 package org.geysermc.geyser.platform.spigot.world.manager;
 
-import com.viaversion.viaversion.api.Via;
-import com.viaversion.viaversion.api.data.MappingData;
-import com.viaversion.viaversion.api.protocol.ProtocolPathEntry;
-import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
-import it.unimi.dsi.fastutil.ints.Int2IntMap;
-import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
-import it.unimi.dsi.fastutil.ints.IntList;
+import java.util.List;
+import java.util.Objects;
+
 import org.geysermc.geyser.network.GameProtocol;
 import org.geysermc.geyser.platform.spigot.GeyserSpigotPlugin;
 import org.geysermc.geyser.session.GeyserSession;
 
-import java.util.List;
-import java.util.Objects;
+import com.viaversion.viaversion.api.Via;
+import com.viaversion.viaversion.api.data.MappingData;
+import com.viaversion.viaversion.api.protocol.ProtocolPathEntry;
+import com.viaversion.viaversion.api.protocol.version.ProtocolVersion;
+
+import it.unimi.dsi.fastutil.ints.Int2IntMap;
+import it.unimi.dsi.fastutil.ints.Int2IntOpenHashMap;
+import it.unimi.dsi.fastutil.ints.IntList;
 
 /**
- * Used when block IDs need to be translated to the latest version
+ * Used when block IDs need to be translated to the latest version.
  */
 public class GeyserSpigotLegacyNativeWorldManager extends GeyserSpigotNativeWorldManager {
 
     private final Int2IntMap oldToNewBlockId;
 
+    /**
+     * Creates a new legacy native world manager.
+     * 
+     * @param plugin - the Geyser plugin instance
+     */
     public GeyserSpigotLegacyNativeWorldManager(GeyserSpigotPlugin plugin) {
         super(plugin);
         IntList allBlockStates = adapter.getAllBlockStates();

@@ -54,12 +54,17 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 /**
- * The base world manager to use when there is no supported NMS revision
+ * The base world manager to use when there is no supported NMS revision.
  */
 public class GeyserSpigotWorldManager extends WorldManager {
     private final Plugin plugin;
     private final BukkitLecterns lecterns;
 
+    /**
+     * Creates a new world manager.
+     * 
+     * @param plugin - the Geyser plugin instance
+     */
     public GeyserSpigotWorldManager(Plugin plugin) {
         this.plugin = plugin;
         this.lecterns = new BukkitLecterns(plugin);
@@ -80,14 +85,23 @@ public class GeyserSpigotWorldManager extends WorldManager {
         return getBlockNetworkId(world.getBlockAt(x, y, z));
     }
 
+    /**
+     * Gets the network ID of a block.
+     * 
+     * @param block - the block
+     * @return - the network ID
+     */
     public int getBlockNetworkId(Block block) {
         if (SchedulerUtils.FOLIA && !Bukkit.isOwnedByCurrentRegion(block)) {
-            // Terrible behavior, but this is basically what's always been happening behind the scenes anyway.
+            // Terrible behavior, but this is basically what's always been happening behind
+            // the scenes anyway.
             CompletableFuture<String> blockData = new CompletableFuture<>();
-            Bukkit.getRegionScheduler().execute(this.plugin, block.getLocation(), () -> blockData.complete(block.getBlockData().getAsString()));
+            Bukkit.getRegionScheduler().execute(this.plugin, block.getLocation(),
+                    () -> blockData.complete(block.getBlockData().getAsString()));
             return BlockRegistries.JAVA_IDENTIFIER_TO_ID.getOrDefault(blockData.join(), BlockStateValues.JAVA_AIR_ID);
         }
-        return BlockRegistries.JAVA_IDENTIFIER_TO_ID.getOrDefault(block.getBlockData().getAsString(), BlockStateValues.JAVA_AIR_ID);
+        return BlockRegistries.JAVA_IDENTIFIER_TO_ID.getOrDefault(block.getBlockData().getAsString(),
+                BlockStateValues.JAVA_AIR_ID);
     }
 
     @Override
@@ -107,6 +121,14 @@ public class GeyserSpigotWorldManager extends WorldManager {
         SchedulerUtils.runTask(this.plugin, () -> sendLecternData(session, block, false), block);
     }
 
+    /**
+     * Sends lectern data to the client.
+     * 
+     * @param session          - the session
+     * @param x                - the x coordinate
+     * @param z                - the z coordinate
+     * @param blockEntityInfos - the block entity infos
+     */
     public void sendLecternData(GeyserSession session, int x, int z, List<BlockEntityInfo> blockEntityInfos) {
         Player bukkitPlayer;
         if ((bukkitPlayer = Bukkit.getPlayer(session.getPlayerEntity().getUsername())) == null) {
@@ -117,8 +139,8 @@ public class GeyserSpigotWorldManager extends WorldManager {
             if (chunk == null) {
                 return;
             }
-            Bukkit.getRegionScheduler().execute(this.plugin, bukkitPlayer.getWorld(), x, z, () ->
-                sendLecternData(session, chunk, blockEntityInfos));
+            Bukkit.getRegionScheduler().execute(this.plugin, bukkitPlayer.getWorld(), x, z,
+                    () -> sendLecternData(session, chunk, blockEntityInfos));
         } else {
             Bukkit.getScheduler().runTask(this.plugin, () -> {
                 Chunk chunk = getChunk(bukkitPlayer.getWorld(), x, z);
@@ -138,7 +160,7 @@ public class GeyserSpigotWorldManager extends WorldManager {
     }
 
     private void sendLecternData(GeyserSession session, Chunk chunk, List<BlockEntityInfo> blockEntityInfos) {
-        //noinspection ForLoopReplaceableByForEach - avoid constructing Iterator
+        // noinspection ForLoopReplaceableByForEach - avoid constructing Iterator
         for (int i = 0; i < blockEntityInfos.size(); i++) {
             BlockEntityInfo info = blockEntityInfos.get(i);
             Block block = chunk.getBlock(info.getX(), info.getY(), info.getZ());
@@ -158,6 +180,14 @@ public class GeyserSpigotWorldManager extends WorldManager {
         return true;
     }
 
+    /**
+     * Gets the value of a game rule as a boolean.
+     * 
+     * @param session  - the session
+     * @param gameRule - the game rule
+     * 
+     * @return the value of the game rule
+     */
     public boolean getGameRuleBool(GeyserSession session, GameRule gameRule) {
         org.bukkit.GameRule<?> bukkitGameRule = org.bukkit.GameRule.getByName(gameRule.getJavaID());
         if (bukkitGameRule == null) {
@@ -174,6 +204,14 @@ public class GeyserSpigotWorldManager extends WorldManager {
         return gameRule.getDefaultBooleanValue();
     }
 
+    /**
+     * Gets the value of a game rule as an int.
+     * 
+     * @param session  - the session
+     * @param gameRule - the game rule
+     * 
+     * @return the value of the game rule
+     */
     @Override
     public int getGameRuleInt(GeyserSession session, GameRule gameRule) {
         org.bukkit.GameRule<?> bukkitGameRule = org.bukkit.GameRule.getByName(gameRule.getJavaID());
@@ -205,7 +243,8 @@ public class GeyserSpigotWorldManager extends WorldManager {
     }
 
     @Override
-    public @NonNull CompletableFuture<@Nullable CompoundTag> getPickItemNbt(GeyserSession session, int x, int y, int z, boolean addNbtData) {
+    public @NonNull CompletableFuture<@Nullable CompoundTag> getPickItemNbt(GeyserSession session, int x, int y, int z,
+            boolean addNbtData) {
         CompletableFuture<@Nullable CompoundTag> future = new CompletableFuture<>();
         Player bukkitPlayer;
         if ((bukkitPlayer = Bukkit.getPlayer(session.getPlayerEntity().getUuid())) == null) {
@@ -220,10 +259,12 @@ public class GeyserSpigotWorldManager extends WorldManager {
     }
 
     /**
-     * This should be set to true if we are post-1.13 but before the latest version, and we should convert the old block state id
+     * This should be set to true if we are post-1.13 but before the latest version,
+     * and we should convert the old block state id
      * to the current one.
      *
-     * @return whether there is a difference between client block state and server block state that requires extra processing
+     * @return whether there is a difference between client block state and server
+     *         block state that requires extra processing
      */
     public boolean isLegacy() {
         return false;

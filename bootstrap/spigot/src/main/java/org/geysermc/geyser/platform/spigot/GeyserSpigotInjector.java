@@ -44,6 +44,9 @@ import java.lang.reflect.ParameterizedType;
 import java.net.InetAddress;
 import java.util.List;
 
+/**
+ * This class is used to inject Geyser into Spigot's network pipeline.
+ */
 public class GeyserSpigotInjector extends GeyserInjector {
     /**
      * Used to determine if ViaVersion is setup to a state where Geyser players will fail at joining if injection is enabled
@@ -54,6 +57,11 @@ public class GeyserSpigotInjector extends GeyserInjector {
      */
     private List<ChannelFuture> allServerChannels;
 
+    /**
+     * Creates a new Spigot injector.
+     * 
+     * @param isViaVersion - if ViaVersion is enabled
+     */
     public GeyserSpigotInjector(boolean isViaVersion) {
         this.isViaVersion = isViaVersion;
     }

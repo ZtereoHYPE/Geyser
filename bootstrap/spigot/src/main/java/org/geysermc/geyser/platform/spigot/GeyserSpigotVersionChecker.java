@@ -36,12 +36,22 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 
+/**
+ * This class is used to check if the server is running a supported protocol
+ * version, as well as some other small checks like ViaVersion.
+ */
 public final class GeyserSpigotVersionChecker {
     private static final String VIAVERSION_DOWNLOAD_URL = "https://ci.viaversion.com/job/ViaVersion/";
 
+    /**
+     * Checks if the server is running a supported protocol version.
+     * 
+     * @param logger - the logger
+     * @param viaVersion - if ViaVersion is installed
+     */
     @SuppressWarnings("deprecation")
-    public static void checkForSupportedProtocol(GeyserLogger logger, boolean viaversion) {
-        if (viaversion) {
+    public static void checkForSupportedProtocol(GeyserLogger logger, boolean viaVersion) {
+        if (viaVersion) {
             checkViaVersionSupportedVersions(logger);
             return;
         }
@@ -57,13 +67,15 @@ public final class GeyserSpigotVersionChecker {
         }
 
         // Otherwise, we can just try to find the SharedConstants class
-        // It isn't present in all server versions, but if we can't find it, then we're probably not in the latest version
+        // It isn't present in all server versions, but if we can't find it, then we're
+        // probably not in the latest version
         Class<?> sharedConstants;
         try {
             sharedConstants = Class.forName("net.minecraft.SharedConstants");
         } catch (ClassNotFoundException e) {
             // We're using pre-1.17
-            String prefix = Bukkit.getServer().getClass().getPackage().getName().replace("org.bukkit.craftbukkit", "net.minecraft.server");
+            String prefix = Bukkit.getServer().getClass().getPackage().getName().replace("org.bukkit.craftbukkit",
+                    "net.minecraft.server");
             try {
                 sharedConstants = Class.forName(prefix + ".SharedConstants");
             } catch (ClassNotFoundException e2) {
@@ -77,7 +89,9 @@ public final class GeyserSpigotVersionChecker {
                 try {
                     protocolVersion = (int) method.invoke(null);
                 } catch (IllegalAccessException | InvocationTargetException e) {
-                    logger.warning("Could not determine server version! This is safe to ignore, but please report to the developers: " + e.getMessage());
+                    logger.warning(
+                            "Could not determine server version! This is safe to ignore, but please report to the developers: "
+                                    + e.getMessage());
                     if (logger.isDebug()) {
                         e.printStackTrace();
                     }
@@ -100,8 +114,10 @@ public final class GeyserSpigotVersionChecker {
                 return;
             }
             if (Via.getAPI().getFullSupportedVersions().contains(GameProtocol.getJavaProtocolVersion())) {
-                // ViaVersion supports our protocol, but the user has blocked them from connecting.
-                logger.warning(GeyserLocale.getLocaleStringLog("geyser.bootstrap.viaversion.blocked", GameProtocol.getAllSupportedJavaVersions()));
+                // ViaVersion supports our protocol, but the user has blocked them from
+                // connecting.
+                logger.warning(GeyserLocale.getLocaleStringLog("geyser.bootstrap.viaversion.blocked",
+                        GameProtocol.getAllSupportedJavaVersions()));
                 return;
             }
             // Else, presumably, ViaVersion is not updated.
@@ -109,13 +125,19 @@ public final class GeyserSpigotVersionChecker {
         });
     }
 
+    /**
+     * Sends a message to the console that ViaVersion is outdated.
+     * 
+     * @param logger - the logger
+     */
     public static void sendOutdatedViaVersionMessage(GeyserLogger logger) {
         logger.warning(GeyserLocale.getLocaleStringLog("geyser.bootstrap.viaversion.too_old",
                 VIAVERSION_DOWNLOAD_URL));
     }
 
     private static void sendOutdatedMessage(GeyserLogger logger) {
-        logger.warning(GeyserLocale.getLocaleStringLog("geyser.bootstrap.no_supported_protocol", GameProtocol.getAllSupportedJavaVersions(), VIAVERSION_DOWNLOAD_URL));
+        logger.warning(GeyserLocale.getLocaleStringLog("geyser.bootstrap.no_supported_protocol",
+                GameProtocol.getAllSupportedJavaVersions(), VIAVERSION_DOWNLOAD_URL));
     }
 
     private GeyserSpigotVersionChecker() {

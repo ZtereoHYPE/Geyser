@@ -63,6 +63,9 @@ public class GeyserSpigotCompressionDisabler extends ChannelOutboundHandlerAdapt
         ENABLED = enabled;
     }
 
+    /**
+     * Creates a new compression disabler.
+     */
     public GeyserSpigotCompressionDisabler() {
         if (!ENABLED) {
             throw new RuntimeException("Geyser compression disabler cannot be initialized in its current state!");

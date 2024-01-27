@@ -34,9 +34,17 @@ import org.geysermc.geyser.command.GeyserCommandSource;
 import org.geysermc.geyser.platform.spigot.PaperAdventure;
 import org.geysermc.geyser.text.GeyserLocale;
 
+/**
+ * This is the Spigot implementation for the {@link GeyserCommandSource}
+ */
 public class SpigotCommandSource implements GeyserCommandSource {
     private final org.bukkit.command.CommandSender handle;
 
+    /**
+     * Creates a new command source.
+     * 
+     * @param handle - the command sender
+     */
     public SpigotCommandSource(org.bukkit.command.CommandSender handle) {
         this.handle = handle;
         // Ensure even Java players' languages are loaded

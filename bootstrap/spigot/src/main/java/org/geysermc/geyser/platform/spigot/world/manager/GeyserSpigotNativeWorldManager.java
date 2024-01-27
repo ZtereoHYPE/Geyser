@@ -34,9 +34,17 @@ import org.geysermc.geyser.adapters.spigot.SpigotWorldAdapter;
 import org.geysermc.geyser.level.block.BlockStateValues;
 import org.geysermc.geyser.session.GeyserSession;
 
+/**
+ * This is the Spigot implementation for the {@link GeyserSpigotWorldManager}
+ */
 public class GeyserSpigotNativeWorldManager extends GeyserSpigotWorldManager {
     protected final SpigotWorldAdapter adapter;
 
+    /**
+     * Creates a new native world manager.
+     * 
+     * @param plugin - the Geyser plugin instance
+     */
     public GeyserSpigotNativeWorldManager(Plugin plugin) {
         super(plugin);
         adapter = SpigotAdapters.getWorldAdapter();
@@ -54,8 +62,9 @@ public class GeyserSpigotNativeWorldManager extends GeyserSpigotWorldManager {
     @Nullable
     @Override
     public String[] getBiomeIdentifiers(boolean withTags) {
-        // Biome identifiers will basically always be the same for one server, since you have to re-send the
-        // ClientboundLoginPacket to change the registry. Therefore, don't bother caching for each player.
+        // Biome identifiers will basically always be the same for one server, since you
+        // have to re-send the ClientboundLoginPacket to change the registry. Therefore,
+        // don't bother caching for each player.
         return adapter.getBiomeSuggestions(withTags);
     }
 }

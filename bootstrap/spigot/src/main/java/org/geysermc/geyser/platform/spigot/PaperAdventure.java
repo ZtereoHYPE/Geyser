@@ -102,6 +102,12 @@ public final class PaperAdventure {
         SEND_MESSAGE_COMPONENT = playerComponentSendMessage;
     }
 
+    /**
+     * Converts a {@link Component} into a native component.
+     * 
+     * @param component - the component to convert
+     * @return - the native component, or {@code null} if it failed
+     */
     public static @Nullable Object toNativeComponent(final Component component) {
         if (NATIVE_GSON_COMPONENT_SERIALIZER_DESERIALIZE_METHOD_BOUND == null) {
             GeyserImpl.getInstance().getLogger().error("Illegal state where Component serialization was called when it wasn't available!");
@@ -116,6 +122,12 @@ public final class PaperAdventure {
         }
     }
 
+    /**
+     * Sends a {@link Component} to a {@link CommandSender}.
+     * 
+     * @param sender - the sender to send the message to
+     * @param component - the component to send
+     */
     public static void sendMessage(final CommandSender sender, final Component component) {
         if (SEND_MESSAGE_COMPONENT == null) {
             GeyserImpl.getInstance().getLogger().error("Illegal state where Component sendMessage was called when it wasn't available!");
@@ -132,6 +144,11 @@ public final class PaperAdventure {
         }
     }
 
+    /**
+     * Checks if the server supports sending messages using {@link Component}.
+     * 
+     * @return {@code true} if the server supports sending messages using {@link Component}
+     */
     public static boolean canSendMessageUsingComponent() {
         return SEND_MESSAGE_COMPONENT != null;
     }

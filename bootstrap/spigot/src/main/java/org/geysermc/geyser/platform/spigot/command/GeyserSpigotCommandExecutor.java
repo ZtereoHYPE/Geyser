@@ -41,8 +41,19 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * This is the class which registers the command with Spigot.
+ * 
+ * It also implements the TabExecutor interface to allow for tab completion.
+ */
 public class GeyserSpigotCommandExecutor extends GeyserCommandExecutor implements TabExecutor {
 
+    /**
+     * Creates a new command executor. 
+     * 
+     * @param geyser - the Geyser instance
+     * @param commands - the commands to register
+     */
     public GeyserSpigotCommandExecutor(GeyserImpl geyser, Map<String, org.geysermc.geyser.api.command.Command> commands) {
         super(geyser, commands);
     }

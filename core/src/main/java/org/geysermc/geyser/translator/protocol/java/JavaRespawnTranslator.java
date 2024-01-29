@@ -66,22 +66,22 @@ public class JavaRespawnTranslator extends PacketTranslator<ClientboundRespawnPa
         session.sendUpstreamPacket(playerGameTypePacket);
         session.setGameMode(spawnInfo.getGameMode());
 
-        if (session.isRaining()) {
+        if (session.getWeatherCache().isRaining()) {
             LevelEventPacket stopRainPacket = new LevelEventPacket();
             stopRainPacket.setType(LevelEvent.STOP_RAINING);
             stopRainPacket.setData(0);
             stopRainPacket.setPosition(Vector3f.ZERO);
             session.sendUpstreamPacket(stopRainPacket);
-            session.setRaining(false);
+            session.getWeatherCache().setRaining(false);
         }
 
-        if (session.isThunder()) {
+        if (session.getWeatherCache().isThunder()) {
             LevelEventPacket stopThunderPacket = new LevelEventPacket();
             stopThunderPacket.setType(LevelEvent.STOP_THUNDERSTORM);
             stopThunderPacket.setData(0);
             stopThunderPacket.setPosition(Vector3f.ZERO);
             session.sendUpstreamPacket(stopThunderPacket);
-            session.setThunder(false);
+            session.getWeatherCache().setThunder(false);
         }
 
         String newDimension = spawnInfo.getDimension();

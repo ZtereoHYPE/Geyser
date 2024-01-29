@@ -96,7 +96,7 @@ public class PandaEntity extends AnimalEntity {
     @NonNull
     @Override
     protected InteractiveTag testMobInteraction(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
-        if (mainGene == Gene.WORRIED && session.isThunder()) {
+        if (mainGene == Gene.WORRIED && session.getWeatherCache().isThunder()) {
             return InteractiveTag.NONE;
         }
         return super.testMobInteraction(hand, itemInHand);
@@ -105,7 +105,7 @@ public class PandaEntity extends AnimalEntity {
     @NonNull
     @Override
     protected InteractionResult mobInteract(@NonNull Hand hand, @NonNull GeyserItemStack itemInHand) {
-        if (mainGene == Gene.WORRIED && session.isThunder()) {
+        if (mainGene == Gene.WORRIED && session.getWeatherCache().isThunder()) {
             // Huh!
             return InteractionResult.PASS;
         } else if (getFlag(EntityFlag.LAYING_DOWN)) {

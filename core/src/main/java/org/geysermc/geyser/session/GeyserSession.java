@@ -526,17 +526,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     @Setter
     private float walkSpeed;
 
-    /**
-     * Caches current rain status.
-     */
-    @Setter
-    private boolean raining = false;
-
-    /**
-     * Caches current thunder status.
-     */
-    @Setter
-    private boolean thunder = false;
+    private WeatherCache weatherCache;
 
     /**
      * Stores a map of all statistics sent from the server.

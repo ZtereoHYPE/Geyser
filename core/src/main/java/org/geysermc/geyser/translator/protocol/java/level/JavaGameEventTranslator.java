@@ -70,7 +70,7 @@ public class JavaGameEventTranslator extends PacketTranslator<ClientboundGameEve
                 stopRainPacket.setData(0);
                 stopRainPacket.setPosition(Vector3f.ZERO);
                 session.sendUpstreamPacket(stopRainPacket);
-                session.setRaining(false);
+                session.getWeatherCache().setRaining(false);
                 break;
             case STOP_RAIN:
                 LevelEventPacket startRainPacket = new LevelEventPacket();
@@ -78,7 +78,7 @@ public class JavaGameEventTranslator extends PacketTranslator<ClientboundGameEve
                 startRainPacket.setData(MAX_STORM_STRENGTH);
                 startRainPacket.setPosition(Vector3f.ZERO);
                 session.sendUpstreamPacket(startRainPacket);
-                session.setRaining(true);
+                session.getWeatherCache().setRaining(true);
                 break;
             case RAIN_STRENGTH:
                 float rainStrength = ((RainStrengthValue) packet.getValue()).getStrength();
@@ -89,7 +89,7 @@ public class JavaGameEventTranslator extends PacketTranslator<ClientboundGameEve
                 changeRainPacket.setData((int) (rainStrength * MAX_STORM_STRENGTH));
                 changeRainPacket.setPosition(Vector3f.ZERO);
                 session.sendUpstreamPacket(changeRainPacket);
-                session.setRaining(isCurrentlyRaining);
+                session.getWeatherCache().setRaining(isCurrentlyRaining);
                 break;
             case THUNDER_STRENGTH:
                 // See above, same process
@@ -100,7 +100,7 @@ public class JavaGameEventTranslator extends PacketTranslator<ClientboundGameEve
                 changeThunderPacket.setData((int) (thunderStrength * MAX_STORM_STRENGTH));
                 changeThunderPacket.setPosition(Vector3f.ZERO);
                 session.sendUpstreamPacket(changeThunderPacket);
-                session.setThunder(isCurrentlyThundering);
+                session.getWeatherCache().setThunder(isCurrentlyThundering);
                 break;
             case CHANGE_GAMEMODE:
                 GameMode gameMode = (GameMode) packet.getValue();

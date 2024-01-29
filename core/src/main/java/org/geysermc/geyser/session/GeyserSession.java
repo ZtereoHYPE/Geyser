@@ -190,7 +190,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
 
     private final SessionPlayerEntity playerEntity;
 
-    private final SessionCacheManager cache;
+    private final SessionCache cache;
 
     @Setter
     private TeleportCache unconfirmedTeleport;
@@ -592,7 +592,7 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
 
         this.collisionManager = new CollisionManager(this);
 
-        this.cache = new SessionCacheManager(geyser, this);
+        this.cache = new SessionCache(geyser, this);
 
         this.playerEntity = new SessionPlayerEntity(this);
         collisionManager.updatePlayerBoundingBox(this.playerEntity.getPosition());

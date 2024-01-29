@@ -14,7 +14,7 @@ import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import lombok.Getter;
 
 @Getter
-public class SessionCacheManager {
+public class SessionCache {
 
     private final AdvancementsCache advancementsCache;
     private final BookEditCache bookEditCache;
@@ -44,7 +44,7 @@ public class SessionCacheManager {
      */
     private final Set<Vector3i> lecternCache;
 
-    public SessionCacheManager(GeyserImpl geyser, GeyserSession session) {
+    public SessionCache(GeyserImpl geyser, GeyserSession session) {
         this.advancementsCache = new AdvancementsCache(session);
         this.bookEditCache = new BookEditCache(session);
         this.chunkCache = new ChunkCache(session);

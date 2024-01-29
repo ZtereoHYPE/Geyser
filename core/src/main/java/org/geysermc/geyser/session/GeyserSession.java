@@ -192,9 +192,6 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
 
     private final SessionCache cache;
 
-    @Setter
-    private TeleportCache unconfirmedTeleport;
-
     private final WorldBorder worldBorder;
     /**
      * Whether simulated fog has been sent to the client or not.
@@ -1591,12 +1588,14 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
     }
 
     public void confirmTeleport(Vector3d position) {
+        TeleportCache unconfirmedTeleport = this.getUnconfirmedTeleport();
+
         if (unconfirmedTeleport == null) {
             return;
         }
 
         if (unconfirmedTeleport.canConfirm(position)) {
-            unconfirmedTeleport = null;
+            this.cache.setUnconfirmedTeleport(null);
             return;
         }
 
@@ -2162,5 +2161,9 @@ public class GeyserSession implements GeyserConnection, GeyserCommandSource {
 
     public Set<Vector3i> getLecternCache() {
         return this.cache.getLecternCache();
+    }
+
+    public TeleportCache getUnconfirmedTeleport() {
+        return this.cache.getUnconfirmedTeleport();
     }
 }

@@ -12,6 +12,7 @@ import org.geysermc.geyser.session.GeyserSession;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectOpenHashSet;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
 public class SessionCache {
@@ -43,6 +44,9 @@ public class SessionCache {
      * for more information.
      */
     private final Set<Vector3i> lecternCache;
+
+    @Setter
+    private TeleportCache unconfirmedTeleport;
 
     public SessionCache(GeyserImpl geyser, GeyserSession session) {
         this.advancementsCache = new AdvancementsCache(session);
